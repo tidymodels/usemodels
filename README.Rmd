@@ -1,0 +1,57 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "",
+  prompt = TRUE,
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# usemodels
+
+[![R build status](https://github.com/tidymodels/usemodel/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/usemodel/actions)
+[![Codecov test coverage](https://codecov.io/gh/tidymodels/usemodel/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/usemodel?branch=master)
+![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
+
+
+The usemodels package is a helpful way of quickly creating code snippets to fit models using the tidymodels framework. 
+
+Given a simple formula and a data set, the `use_*` functions can create code that appropriate for the data (given the model). 
+
+For example, using the iris data with a `glmnet` model: 
+
+```{r glmnet}
+library(usemodels)
+use_glmnet(Sepal.Length ~ ., data = iris)
+```
+
+The recipe steps that are used (if any) depend on the type of data as well as the model. In this case, the first two steps handle the fact that `Species` is a factor-encoded predictor (and `glmnet` requires all numeric predictors). The last two steps are added because, for this model, the predictors should be on the same scale to be properly regularized. 
+
+The package includes these templates:
+
+
+```{r use-list}
+ls("package:usemodels", pattern = "use_")
+```
+
+## Installation
+
+You can install usemodels with:
+
+``` r
+devtools:install_github("tidymodels/usemodels")
+```
+
+
+## Code of Conduct
+  
+Please note that usemodels is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+  
+  
