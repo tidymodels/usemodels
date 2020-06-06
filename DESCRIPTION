@@ -12,7 +12,7 @@ Authors@R:
         ),
     person("RStudio", role = "cph"))
 Description: Code snippets to fit models using the tidymodels framework can be easily created for a given data set. 
-URL: https://github.com/tidymodels/usemodels
+URL: https://tidymodels.github.io/usemodels/, https://github.com/tidymodels/usemodels
 BugReports: https://github.com/tidymodels/usemodels/issues
 License: MIT + file LICENSE
 Suggests: 

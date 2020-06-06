@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # usemodels
 
-[![R build status](https://github.com/tidymodels/usemodel/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/usemodel/actions)
+[![R build status](https://github.com/tidymodels/usemodels/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/usemodels/actions)
 [![Codecov test coverage](https://codecov.io/gh/tidymodels/usemodel/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/usemodel?branch=master)
 ![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
 
