@@ -63,7 +63,7 @@ The package includes these templates:
 You can install usemodels with:
 
 ``` r
-devtools:install_github("tidymodels/usemodels")
+devtools::install_github("tidymodels/usemodels")
 ```
 
 ## Code of Conduct
