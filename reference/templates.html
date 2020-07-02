@@ -136,15 +136,15 @@ for their respective techniques. Each creates a prototype recipe and workflow
 object that can be edited or updated as the data require.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>use_glmnet</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>use_glmnet</span>(<span class='kw'>formula</span>, <span class='kw'>data</span>, verbose = <span class='fl'>FALSE</span>, tune = <span class='fl'>TRUE</span>, colors = <span class='fl'>TRUE</span>)
 
-<span class='fu'>use_xgboost</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>use_xgboost</span>(<span class='kw'>formula</span>, <span class='kw'>data</span>, verbose = <span class='fl'>FALSE</span>, tune = <span class='fl'>TRUE</span>, colors = <span class='fl'>TRUE</span>)
 
-<span class='fu'>use_kknn</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>use_kknn</span>(<span class='kw'>formula</span>, <span class='kw'>data</span>, verbose = <span class='fl'>FALSE</span>, tune = <span class='fl'>TRUE</span>, colors = <span class='fl'>TRUE</span>)
 
-<span class='fu'>use_ranger</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>use_ranger</span>(<span class='kw'>formula</span>, <span class='kw'>data</span>, verbose = <span class='fl'>FALSE</span>, tune = <span class='fl'>TRUE</span>, colors = <span class='fl'>TRUE</span>)
 
-<span class='fu'>use_earth</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>use_earth</span>(<span class='kw'>formula</span>, <span class='kw'>data</span>, verbose = <span class='fl'>FALSE</span>, tune = <span class='fl'>TRUE</span>, colors = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -189,7 +189,7 @@ that recipe step is not included in the output.</p>
 every data analysis. It has reasonable defaults.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>use_glmnet</span>(<span class='no'>Species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)</div><div class='output co'>#&gt; glmn_recipe &lt;- 
+    <pre class="examples"><div class='input'><span class='fu'>use_glmnet</span>(<span class='kw'>Species</span> <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>iris</span>)</div><div class='output co'>#&gt; glmn_recipe &lt;- 
 #&gt;   recipe(formula = Species ~ ., data = iris) %&gt;% 
 #&gt;   step_zv(all_predictors()) %&gt;% 
 #&gt;   step_normalize(all_predictors(), -all_nominal()) 
@@ -209,7 +209,7 @@ every data analysis. It has reasonable defaults.</p>
 #&gt; 
 #&gt; glmn_tune &lt;- 
 #&gt;   tune_grid(glmn_workflow, resamples = <span style='color: #BB0000;'>stop("add your rsample object")</span><span>, grid = glmn_grid) 
-#&gt; </div><div class='input'><span class='fu'>use_glmnet</span>(<span class='no'>Sepal.Length</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; glmn_recipe &lt;- 
+#&gt; </div><div class='input'><span class='fu'>use_glmnet</span>(<span class='kw'>Sepal.Length</span> <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>iris</span>, verbose = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; glmn_recipe &lt;- 
 #&gt;   recipe(formula = Sepal.Length ~ ., data = iris) %&gt;% 
 #&gt;   step_novel(all_nominal(), -all_outcomes()) %&gt;% 
 #&gt;   </span><span style='color: #BBBB00;'>## This model requires the predictors to be numeric. The most common</span><span> 
