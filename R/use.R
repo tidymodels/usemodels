@@ -49,10 +49,7 @@ use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
-      add_steps_dummy_vars(rec_syntax,
-                           hot = TRUE,
-                           add = verbose,
-                           colors = colors)
+      add_steps_dummy_vars(rec_syntax, add = verbose, colors = colors)
   }
   rec_syntax <-
     rec_syntax %>%
