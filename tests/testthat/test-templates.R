@@ -36,14 +36,15 @@ no_dummy_template <- function(model, verbose, tune) {
 }
 
 verify_models <- function(model, tune, verbose) {
-  local_edition(3)
-
+  # These are automatically skipped on CRAN
   expect_snapshot_output(   dummy_template(model, verbose, tune))
   expect_snapshot_output(no_dummy_template(model, verbose, tune))
 }
 
 
 test_that('all model templates', {
+  local_edition(3)
+
   models <- c("glmnet", "xgboost", "ranger", "kknn", "earth")
 
   test_config <-
