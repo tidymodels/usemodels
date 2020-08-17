@@ -89,7 +89,7 @@
 glmn_recipe &lt;- 
   recipe(formula = body_mass_g ~ ., data = penguins) %&gt;% 
   step_novel(all_nominal(), -all_outcomes()) %&gt;% 
-  step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %&gt;% 
+  step_dummy(all_nominal(), -all_outcomes()) %&gt;% 
   step_zv(all_predictors()) %&gt;% 
   step_normalize(all_predictors(), -all_nominal()) 
 
