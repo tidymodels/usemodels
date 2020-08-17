@@ -25,7 +25,7 @@ For example, using the palmerpenguins data with a `glmnet` model:
 glmn_recipe <- 
   recipe(formula = body_mass_g ~ ., data = penguins) %>% 
   step_novel(all_nominal(), -all_outcomes()) %>% 
-  step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+  step_dummy(all_nominal(), -all_outcomes()) %>% 
   step_zv(all_predictors()) %>% 
   step_normalize(all_predictors(), -all_nominal()) 
 
