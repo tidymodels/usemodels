@@ -1,6 +1,11 @@
 
 context("templating functions")
 
+library(palmerpenguins)
+data("penguins")
+
+penguins$island <- as.character(penguins$island)
+
 # ------------------------------------------------------------------------------
 
 # Code to loop over all tests and configurations
@@ -10,10 +15,11 @@ dummy_template <- function(model, verbose, tune) {
   rlang::eval_tidy(
     rlang::call2(
       paste0("use_", model),
-      formula = Sepal.Width ~ .,
-      data = expr(iris),
+      formula = body_mass_g ~ .,
+      data = expr(penguins),
       verbose = enexpr(verbose),
-      tune = enexpr(tune)
+      tune = enexpr(tune),
+      colors = TRUE
     )
   )
 }
@@ -23,31 +29,20 @@ no_dummy_template <- function(model, verbose, tune) {
   rlang::eval_tidy(
     rlang::call2(
       paste0("use_", model),
-      formula = Species ~ .,
-      data = expr(iris),
+      formula = species ~ .,
+      data = expr(penguins),
       verbose = enexpr(verbose),
-      tune = enexpr(tune)
+      tune = enexpr(tune),
+      colors = TRUE
     )
   )
 }
 
 verify_models <- function(model, tune, verbose) {
-  file_names <- model
-  if (tune) {
-    file_names <- paste0(file_names, "_tune")
-  }
-  if (verbose) {
-    file_names <- paste0(file_names, "_verbose")
-  }
-  file_names <- paste0(file_names, c("_dummies", ""))
-  file_names <- paste0(file_names, ".txt")
+  local_edition(3)
 
-  verify_output(test_path("templates", file_names[1]), {
-    dummy_template(model, verbose, tune)
-  })
-  verify_output(test_path("templates", file_names[2]), {
-    no_dummy_template(model, verbose, tune)
-  })
+  expect_snapshot_output(   dummy_template(model, verbose, tune))
+  expect_snapshot_output(no_dummy_template(model, verbose, tune))
 }
 
 

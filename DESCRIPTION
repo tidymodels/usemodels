@@ -33,3 +33,4 @@ Imports:
     purrr,
     dplyr,
     tidyr
+Config/testthat/edition: 3
