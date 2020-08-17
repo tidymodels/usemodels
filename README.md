@@ -15,13 +15,15 @@ to fit models using the tidymodels framework.
 Given a simple formula and a data set, the `use_*` functions can create
 code that appropriate for the data (given the model).
 
-For example, using the iris data with a `glmnet` model:
+For example, using the palmerpenguins data with a `glmnet` model:
 
 ``` r
 > library(usemodels)
-> use_glmnet(Sepal.Length ~ ., data = iris)
+> library(palmerpenguins)
+> data(penguins)
+> use_glmnet(body_mass_g ~ ., data = penguins)
 glmn_recipe <- 
-  recipe(formula = Sepal.Length ~ ., data = iris) %>% 
+  recipe(formula = body_mass_g ~ ., data = penguins) %>% 
   step_novel(all_nominal(), -all_outcomes()) %>% 
   step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
   step_zv(all_predictors()) %>% 
@@ -37,7 +39,7 @@ glmn_workflow <-
   add_recipe(glmn_recipe) %>% 
   add_model(glmn_model) 
 
-glmn_grid <- expand.grid(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, 
+glmn_grid <- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, 
     0.2, 0.4, 0.6, 0.8, 1)) 
 
 glmn_tune <- 

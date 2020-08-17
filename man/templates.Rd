@@ -53,6 +53,8 @@ The syntax is opinionated and should not be considered the exact answer for
 every data analysis. It has reasonable defaults.
 }
 \examples{
-use_glmnet(Species ~ ., data = iris)
-use_glmnet(Sepal.Length ~ ., data = iris, verbose = TRUE)
+library(palmerpenguins)
+data(penguins)
+use_glmnet(species ~ ., data = penguins)
+use_glmnet( body_mass_g ~ ., data = penguins, verbose = TRUE)
 }

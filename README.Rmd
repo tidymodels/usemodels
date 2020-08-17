@@ -25,11 +25,13 @@ The usemodels package is a helpful way of quickly creating code snippets to fit 
 
 Given a simple formula and a data set, the `use_*` functions can create code that appropriate for the data (given the model). 
 
-For example, using the iris data with a `glmnet` model: 
+For example, using the palmerpenguins data with a `glmnet` model: 
 
 ```{r glmnet}
 library(usemodels)
-use_glmnet(Sepal.Length ~ ., data = iris)
+library(palmerpenguins)
+data(penguins)
+use_glmnet(body_mass_g ~ ., data = penguins)
 ```
 
 The recipe steps that are used (if any) depend on the type of data as well as the model. In this case, the first two steps handle the fact that `Species` is a factor-encoded predictor (and `glmnet` requires all numeric predictors). The last two steps are added because, for this model, the predictors should be on the same scale to be properly regularized. 
