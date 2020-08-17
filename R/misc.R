@@ -100,7 +100,7 @@ add_steps_normalization <- function(base) {
     pipe_value(step_zv(all_predictors())) %>%
     pipe_value(step_normalize(all_predictors(), -all_nominal()))
 }
-factor_check <- function(base, rec, add) {
+factor_check <- function(base, rec, add, colors = TRUE) {
   var_roles <- summary(rec)
   nominal <- var_roles$variable[var_roles$type == "nominal"]
   is_str <-
@@ -188,6 +188,7 @@ template_tune_no_grid <- function(prefix, seed = sample.int(10^5, 1), colors = T
 initial_recipe_call <- function(cl) {
   cl$tune <- NULL
   cl$verbose <-  NULL
+  cl$colors <-  NULL
   rec_cl <- cl
   rec_cl[[1]] <- rlang::expr(recipe)
   rec_cl

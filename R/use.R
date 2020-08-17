@@ -45,7 +45,7 @@ use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose)
+    factor_check(rec, add = verbose, colors = colors)
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
@@ -123,7 +123,7 @@ use_xgboost <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TR
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose)
+    factor_check(rec, add = verbose, colors = colors)
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
@@ -174,7 +174,7 @@ use_kknn <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose)
+    factor_check(rec, add = verbose, colors= colors)
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
@@ -220,7 +220,7 @@ use_ranger <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose)
+    factor_check(rec, add = verbose, colors= colors)
 
   # TODO add a check for the factor levels that are an issue for
 
@@ -260,7 +260,7 @@ use_earth <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose)
+    factor_check(rec, add = verbose, colors= colors)
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
