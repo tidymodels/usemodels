@@ -1,6 +1,3 @@
-
-context("templating functions")
-
 library(palmerpenguins)
 data("penguins")
 
@@ -52,9 +49,7 @@ test_that('all model templates', {
   test_config <-
     expand.grid(
       model = models,
-      # TODO for some reason the tune results fail the test with the msg
-      # "Lengths differ: 25 is not 26" (or for whatever length of the results)
-      tune = c(FALSE),
+      tune = c(FALSE, TRUE),
       verbose = c(TRUE, FALSE)
     )
 
