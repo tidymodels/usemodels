@@ -29,8 +29,10 @@
 #' The syntax is opinionated and should not be considered the exact answer for
 #' every data analysis. It has reasonable defaults.
 #' @examples
-#' use_glmnet(Species ~ ., data = iris)
-#' use_glmnet(Sepal.Length ~ ., data = iris, verbose = TRUE)
+#' library(palmerpenguins)
+#' data(penguins)
+#' use_glmnet(species ~ ., data = penguins)
+#' use_glmnet( body_mass_g ~ ., data = penguins, verbose = TRUE)
 #' @export
 #' @rdname templates
 use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE) {
@@ -97,8 +99,11 @@ use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
 
   if (tune) {
     glmn_grid <- rlang::expr(
-      glmn_grid <- expand.grid(penalty = 10 ^ seq(-6,-1, length.out = 20),
-                               mixture = c(0.05, .2, .4, .6, .8, 1))
+      glmn_grid <-
+        tidyr::crossing(
+          penalty = 10 ^ seq(-6, -1, length.out = 20),
+          mixture = c(0.05, .2, .4, .6, .8, 1)
+        )
     )
     cat(rlang::expr_text(glmn_grid, width = expr_width), "\n\n")
     cat(template_tune_with_grid("glmn", colors = colors), "\n\n")
@@ -289,7 +294,8 @@ use_earth <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE
     term_max <- floor(min(12, floor(floor(nrow(data) * 0.75)))/2)
 
     mars_grid <- rlang::expr(
-      mars_grid <- expand.grid(num_terms = 2 * (1:!!term_max), prod_degree = 1:2)
+      mars_grid <-
+        tidyr::crossing(num_terms = 2 * (1:!!term_max), prod_degree = 1:2)
     )
     top_level_comment(
       "MARS models can make predictions on many _sub_models_, meaning that we can",
