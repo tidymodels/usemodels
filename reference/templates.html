@@ -194,7 +194,7 @@ every data analysis. It has reasonable defaults.</p>
 <span class='fu'>use_glmnet</span>(<span class='no'>species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>penguins</span>)</div><div class='output co'>#&gt; glmn_recipe &lt;- 
 #&gt;   recipe(formula = species ~ ., data = penguins) %&gt;% 
 #&gt;   step_novel(all_nominal(), -all_outcomes()) %&gt;% 
-#&gt;   step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %&gt;% 
+#&gt;   step_dummy(all_nominal(), -all_outcomes()) %&gt;% 
 #&gt;   step_zv(all_predictors()) %&gt;% 
 #&gt;   step_normalize(all_predictors(), -all_nominal()) 
 #&gt; 
@@ -219,10 +219,8 @@ every data analysis. It has reasonable defaults.</p>
 #&gt;   </span><span style='color: #BBBB00;'>## This model requires the predictors to be numeric. The most common</span><span> 
 #&gt;   </span><span style='color: #BBBB00;'>## method to convert qualitative predictors to numeric is to create</span><span> 
 #&gt;   </span><span style='color: #BBBB00;'>## binary indicator variables (aka dummy variables) from these</span><span> 
-#&gt;   </span><span style='color: #BBBB00;'>## predictors. However, for this model, binary indicator variables can be</span><span> 
-#&gt;   </span><span style='color: #BBBB00;'>## made for each of the levels of the factors (known as 'one-hot</span><span> 
-#&gt;   </span><span style='color: #BBBB00;'>## encoding').</span><span> 
-#&gt;   step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %&gt;% 
+#&gt;   </span><span style='color: #BBBB00;'>## predictors.</span><span> 
+#&gt;   step_dummy(all_nominal(), -all_outcomes()) %&gt;% 
 #&gt;   </span><span style='color: #BBBB00;'>## Regularization methods sum up functions of the model slope</span><span> 
 #&gt;   </span><span style='color: #BBBB00;'>## coefficients. Because of this, the predictor variables should be on</span><span> 
 #&gt;   </span><span style='color: #BBBB00;'>## the same scale. Before centering and scaling the numeric predictors,</span><span> 
