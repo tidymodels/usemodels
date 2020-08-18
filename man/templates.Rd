@@ -8,15 +8,50 @@
 \alias{use_earth}
 \title{Functions to create boilerplate code for specific models}
 \usage{
-use_glmnet(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
+use_glmnet(
+  formula,
+  data,
+  prefix = "glmnet",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE
+)
 
-use_xgboost(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
+use_xgboost(
+  formula,
+  data,
+  prefix = "xgboost",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE
+)
 
-use_kknn(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
+use_kknn(
+  formula,
+  data,
+  prefix = "kknn",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE
+)
 
-use_ranger(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
+use_ranger(
+  formula,
+  data,
+  prefix = "ranger",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE
+)
 
-use_earth(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
+use_earth(
+  formula,
+  data,
+  prefix = "earth",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE
+)
 }
 \arguments{
 \item{formula}{A simple model formula with no in-line functions. This will
@@ -24,6 +59,9 @@ be used to template the recipe object as well as determining which outcome
 and predictor columns will be used.}
 
 \item{data}{A data frame with the columns used in the analysis.}
+
+\item{prefix}{A single character string to use as a prefix for the resulting
+objects.}
 
 \item{verbose}{A single logical that determined whether comments are added to
 the printed code explaining why certain lines are used.}
@@ -56,5 +94,5 @@ every data analysis. It has reasonable defaults.
 library(palmerpenguins)
 data(penguins)
 use_glmnet(species ~ ., data = penguins)
-use_glmnet( body_mass_g ~ ., data = penguins, verbose = TRUE)
+use_glmnet( body_mass_g ~ ., data = penguins, verbose = TRUE, prefix = "gunter")
 }

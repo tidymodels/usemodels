@@ -34,5 +34,3 @@ Imports:
     dplyr,
     tidyr
 Config/testthat/edition: 3
-Remotes:
-    r-lib/testthat
