@@ -1,7 +1,3 @@
-# ------------------------------------------------------------------------------
-# Functions to create model code
-# Alternate prefixes: scaffold? suggest?
-
 #' Functions to create boilerplate code for specific models
 #'
 #' These functions make suggestions for code when using a few common models.
@@ -13,6 +9,8 @@
 #' be used to template the recipe object as well as determining which outcome
 #' and predictor columns will be used.
 #' @param data A data frame with the columns used in the analysis.
+#' @param prefix A single character string to use as a prefix for the resulting
+#'  objects.
 #' @param verbose A single logical that determined whether comments are added to
 #' the printed code explaining why certain lines are used.
 #' @param tune A single logical that controls if code for model tuning should be
@@ -32,13 +30,13 @@
 #' library(palmerpenguins)
 #' data(penguins)
 #' use_glmnet(species ~ ., data = penguins)
-#' use_glmnet( body_mass_g ~ ., data = penguins, verbose = TRUE)
+#' use_glmnet( body_mass_g ~ ., data = penguins, verbose = TRUE, prefix = "gunter")
 #' @export
 #' @rdname templates
-use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune = TRUE, colors = TRUE) {
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
-    "glmn_recipe" %>%
+    paste0(prefix, "_recipe") %>%
     assign_value(!!rec_cl)
 
   rec <- recipes::recipe(formula, data)
@@ -68,20 +66,20 @@ use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
     num_lvl <- y_lvl(rec)
     if (num_lvl == 2) {
       mod_syntax <-
-        "glmn_model" %>%
+        paste0(prefix, "_model") %>%
         assign_value(!!rlang::call2("logistic_reg", !!!prm)) %>%
         pipe_value(set_mode("classification"))
 
     } else {
       mod_syntax <-
-        "glmn_model" %>%
+        paste0(prefix, "_model") %>%
         assign_value(!!rlang::call2("multinom_reg", !!!prm)) %>%
         pipe_value(set_mode("classification"))
 
     }
   } else {
     mod_syntax <-
-      "glmn_model" %>%
+      paste0(prefix, "_model") %>%
       assign_value(!!rlang::call2("linear_reg", !!!prm)) %>%
       pipe_value(set_mode("regression"))
   }
@@ -92,7 +90,7 @@ use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
 
   cat(rec_syntax, "\n\n")
   cat(mod_syntax, "\n\n")
-  cat(template_workflow("glmn"), "\n\n")
+  cat(template_workflow(prefix), "\n\n")
 
   if (tune) {
     glmn_grid <- rlang::expr(
@@ -102,18 +100,19 @@ use_glmnet <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
           mixture = c(0.05, .2, .4, .6, .8, 1)
         )
     )
+    glmn_grid[[2]] <- rlang::sym(paste0(prefix, "_grid"))
     cat(rlang::expr_text(glmn_grid, width = expr_width), "\n\n")
-    cat(template_tune_with_grid("glmn", colors = colors), "\n\n")
+    cat(template_tune_with_grid(prefix, colors = colors), "\n\n")
   }
   invisible(NULL)
 }
 
 #' @export
 #' @rdname templates
-use_xgboost <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE, tune = TRUE, colors = TRUE) {
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
-    "xgb_recipe" %>%
+    paste0(prefix, "_recipe") %>%
     assign_value(!!rec_cl)
 
   rec <- recipe(formula, data)
@@ -143,16 +142,16 @@ use_xgboost <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TR
   }
 
   mod_syntax <-
-    "xgb_model" %>%
+    paste0(prefix, "_model") %>%
     assign_value(!!rlang::call2("boost_tree", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("xgboost"))
 
   cat(rec_syntax, "\n\n")
   cat(mod_syntax, "\n\n")
-  cat(template_workflow("xgb"), "\n\n")
+  cat(template_workflow(prefix), "\n\n")
   if (tune) {
-    cat(template_tune_no_grid("xgb", colors = colors), "\n\n", sep = "")
+    cat(template_tune_no_grid(prefix, colors = colors), "\n\n", sep = "")
   }
   invisible(NULL)
 }
@@ -161,10 +160,10 @@ use_xgboost <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TR
 
 #' @export
 #' @rdname templates
-use_kknn <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE, tune = TRUE, colors = TRUE) {
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
-    "knn_recipe" %>%
+    paste0(prefix, "_recipe") %>%
     assign_value(!!rec_cl)
 
   rec <- recipes::recipe(formula, data)
@@ -189,16 +188,16 @@ use_kknn <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
   }
 
   mod_syntax <-
-    "knn_model" %>%
+    paste0(prefix, "_model") %>%
     assign_value(!!rlang::call2("nearest_neighbor", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("kknn"))
 
   cat(rec_syntax, "\n\n")
   cat(mod_syntax, "\n\n")
-  cat(template_workflow("knn"), "\n\n")
+  cat(template_workflow(prefix), "\n\n")
   if (tune) {
-    cat(template_tune_no_grid("knn", colors = colors), "\n\n", sep = "")
+    cat(template_tune_no_grid(prefix, colors = colors), "\n\n", sep = "")
   }
   invisible(NULL)
 }
@@ -207,10 +206,10 @@ use_kknn <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE)
 
 #' @export
 #' @rdname templates
-use_ranger <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE, tune = TRUE, colors = TRUE) {
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
-    "ranger_recipe" %>%
+    paste0(prefix, "_recipe") %>%
     assign_value(!!rec_cl)
 
   rec <- recipes::recipe(formula, data)
@@ -228,17 +227,17 @@ use_ranger <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
   }
 
   mod_syntax <-
-    "ranger_model" %>%
+    paste0(prefix, "_model") %>%
     assign_value(!!rlang::call2("rand_forest", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("ranger"))
 
   cat(rec_syntax, "\n\n")
   cat(mod_syntax, "\n\n")
-  cat(template_workflow("ranger"), "\n\n")
+  cat(template_workflow(prefix), "\n\n")
   if (tune) {
 
-    cat(template_tune_no_grid("ranger", colors = colors), "\n\n", sep = "")
+    cat(template_tune_no_grid(prefix, colors = colors), "\n\n", sep = "")
   }
   invisible(NULL)
 }
@@ -247,10 +246,10 @@ use_ranger <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRU
 
 #' @export
 #' @rdname templates
-use_earth <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_earth <- function(formula, data, prefix = "earth", verbose = FALSE, tune = TRUE, colors = TRUE) {
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
-    "mars_recipe" %>%
+    paste0(prefix, "_recipe") %>%
     assign_value(!!rec_cl)
 
   rec <- recipe(formula, data)
@@ -276,14 +275,14 @@ use_earth <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE
   }
 
   mod_syntax <-
-    "mars_model" %>%
+    paste0(prefix, "_model") %>%
     assign_value(!!rlang::call2("mars", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("earth"))
 
   cat(rec_syntax, "\n\n")
   cat(mod_syntax, "\n\n")
-  cat(template_workflow("mars"), "\n\n")
+  cat(template_workflow(prefix), "\n\n")
   if (tune) {
     # We can only have as many terms as data points but maybe we should
     # give some wiggle room for resampling. Also, we will have a sequence of odd
@@ -294,6 +293,7 @@ use_earth <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE
       mars_grid <-
         tidyr::crossing(num_terms = 2 * (1:!!term_max), prod_degree = 1:2)
     )
+    mars_grid[[2]] <- rlang::sym(paste0(prefix, "_grid"))
     top_level_comment(
       "MARS models can make predictions on many _sub_models_, meaning that we can",
       "evaluate many values of `num_terms` without much computational cost.",
@@ -304,7 +304,7 @@ use_earth <- function(formula, data, verbose = FALSE, tune = TRUE, colors = TRUE
       colors = colors
     )
     cat(rlang::expr_text(mars_grid, width = expr_width), "\n\n")
-    cat(template_tune_with_grid("mars", colors = colors), "\n\n")
+    cat(template_tune_with_grid(prefix, colors = colors), "\n\n")
   }
   invisible(NULL)
 }
