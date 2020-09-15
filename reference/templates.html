@@ -137,48 +137,48 @@ object that can be edited or updated as the data require.</p>
     </div>
 
     <pre class="usage"><span class='fu'>use_glmnet</span>(
-  <span class='no'>formula</span>,
-  <span class='no'>data</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"glmnet"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>formula</span>,
+  <span class='kw'>data</span>,
+  prefix = <span class='st'>"glmnet"</span>,
+  verbose = <span class='fl'>FALSE</span>,
+  tune = <span class='fl'>TRUE</span>,
+  colors = <span class='fl'>TRUE</span>
 )
 
 <span class='fu'>use_xgboost</span>(
-  <span class='no'>formula</span>,
-  <span class='no'>data</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"xgboost"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>formula</span>,
+  <span class='kw'>data</span>,
+  prefix = <span class='st'>"xgboost"</span>,
+  verbose = <span class='fl'>FALSE</span>,
+  tune = <span class='fl'>TRUE</span>,
+  colors = <span class='fl'>TRUE</span>
 )
 
 <span class='fu'>use_kknn</span>(
-  <span class='no'>formula</span>,
-  <span class='no'>data</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"kknn"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>formula</span>,
+  <span class='kw'>data</span>,
+  prefix = <span class='st'>"kknn"</span>,
+  verbose = <span class='fl'>FALSE</span>,
+  tune = <span class='fl'>TRUE</span>,
+  colors = <span class='fl'>TRUE</span>
 )
 
 <span class='fu'>use_ranger</span>(
-  <span class='no'>formula</span>,
-  <span class='no'>data</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"ranger"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>formula</span>,
+  <span class='kw'>data</span>,
+  prefix = <span class='st'>"ranger"</span>,
+  verbose = <span class='fl'>FALSE</span>,
+  tune = <span class='fl'>TRUE</span>,
+  colors = <span class='fl'>TRUE</span>
 )
 
 <span class='fu'>use_earth</span>(
-  <span class='no'>formula</span>,
-  <span class='no'>data</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"earth"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>formula</span>,
+  <span class='kw'>data</span>,
+  prefix = <span class='st'>"earth"</span>,
+  verbose = <span class='fl'>FALSE</span>,
+  tune = <span class='fl'>TRUE</span>,
+  colors = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -229,16 +229,17 @@ that recipe step is not included in the output.</p>
 every data analysis. It has reasonable defaults.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>palmerpenguins</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>penguins</span>)
-<span class='fu'>use_glmnet</span>(<span class='no'>species</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>penguins</span>)</div><div class='output co'>#&gt; glmnet_recipe &lt;- 
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://allisonhorst.github.io/palmerpenguins'>palmerpenguins</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>penguins</span>)
+<span class='fu'>use_glmnet</span>(<span class='kw'>species</span> <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>penguins</span>)
+</div><div class='output co'>#&gt; glmnet_recipe &lt;- 
 #&gt;   recipe(formula = species ~ ., data = penguins) %&gt;% 
 #&gt;   step_novel(all_nominal(), -all_outcomes()) %&gt;% 
 #&gt;   step_dummy(all_nominal(), -all_outcomes()) %&gt;% 
 #&gt;   step_zv(all_predictors()) %&gt;% 
 #&gt;   step_normalize(all_predictors(), -all_nominal()) 
 #&gt; 
-#&gt; glmnet_model &lt;- 
+#&gt; glmnet_spec &lt;- 
 #&gt;   multinom_reg(penalty = tune(), mixture = tune()) %&gt;% 
 #&gt;   set_mode("classification") %&gt;% 
 #&gt;   set_engine("glmnet") 
@@ -246,14 +247,15 @@ every data analysis. It has reasonable defaults.</p>
 #&gt; glmnet_workflow &lt;- 
 #&gt;   workflow() %&gt;% 
 #&gt;   add_recipe(glmnet_recipe) %&gt;% 
-#&gt;   add_model(glmnet_model) 
+#&gt;   add_model(glmnet_spec) 
 #&gt; 
 #&gt; glmnet_grid &lt;- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, 
 #&gt;     0.2, 0.4, 0.6, 0.8, 1)) 
 #&gt; 
 #&gt; glmnet_tune &lt;- 
 #&gt;   tune_grid(glmnet_workflow, resamples = <span style='color: #BB0000;'>stop("add your rsample object")</span><span>, grid = glmnet_grid) 
-#&gt; </div><div class='input'><span class='fu'>use_glmnet</span>( <span class='no'>body_mass_g</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>penguins</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"gunter"</span>)</div><div class='output co'>#&gt; gunter_recipe &lt;- 
+#&gt; </div><div class='input'><span class='fu'>use_glmnet</span>( <span class='kw'>body_mass_g</span> <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>penguins</span>, verbose = <span class='fl'>TRUE</span>, prefix = <span class='st'>"gunter"</span>)
+</div><div class='output co'>#&gt; gunter_recipe &lt;- 
 #&gt;   recipe(formula = body_mass_g ~ ., data = penguins) %&gt;% 
 #&gt;   step_novel(all_nominal(), -all_outcomes()) %&gt;% 
 #&gt;   </span><span style='color: #BBBB00;'>## This model requires the predictors to be numeric. The most common</span><span> 
@@ -268,7 +270,7 @@ every data analysis. It has reasonable defaults.</p>
 #&gt;   step_zv(all_predictors()) %&gt;% 
 #&gt;   step_normalize(all_predictors(), -all_nominal()) 
 #&gt; 
-#&gt; gunter_model &lt;- 
+#&gt; gunter_spec &lt;- 
 #&gt;   linear_reg(penalty = tune(), mixture = tune()) %&gt;% 
 #&gt;   set_mode("regression") %&gt;% 
 #&gt;   set_engine("glmnet") 
@@ -276,7 +278,7 @@ every data analysis. It has reasonable defaults.</p>
 #&gt; gunter_workflow &lt;- 
 #&gt;   workflow() %&gt;% 
 #&gt;   add_recipe(gunter_recipe) %&gt;% 
-#&gt;   add_model(gunter_model) 
+#&gt;   add_model(gunter_spec) 
 #&gt; 
 #&gt; gunter_grid &lt;- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, 
 #&gt;     0.2, 0.4, 0.6, 0.8, 1)) 
