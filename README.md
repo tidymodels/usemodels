@@ -22,28 +22,28 @@ For example, using the palmerpenguins data with a `glmnet` model:
 > library(palmerpenguins)
 > data(penguins)
 > use_glmnet(body_mass_g ~ ., data = penguins)
-glmn_recipe <- 
+glmnet_recipe <- 
   recipe(formula = body_mass_g ~ ., data = penguins) %>% 
   step_novel(all_nominal(), -all_outcomes()) %>% 
   step_dummy(all_nominal(), -all_outcomes()) %>% 
   step_zv(all_predictors()) %>% 
   step_normalize(all_predictors(), -all_nominal()) 
 
-glmn_model <- 
+glmnet_spec <- 
   linear_reg(penalty = tune(), mixture = tune()) %>% 
   set_mode("regression") %>% 
   set_engine("glmnet") 
 
-glmn_workflow <- 
+glmnet_workflow <- 
   workflow() %>% 
-  add_recipe(glmn_recipe) %>% 
-  add_model(glmn_model) 
+  add_recipe(glmnet_recipe) %>% 
+  add_model(glmnet_spec) 
 
-glmn_grid <- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, 
+glmnet_grid <- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, 
     0.2, 0.4, 0.6, 0.8, 1)) 
 
-glmn_tune <- 
-  tune_grid(glmn_workflow, resamples = stop("add your rsample object"), grid = glmn_grid) 
+glmnet_tune <- 
+  tune_grid(glmnet_workflow, resamples = stop("add your rsample object"), grid = glmnet_grid) 
 ```
 
 The recipe steps that are used (if any) depend on the type of data as
