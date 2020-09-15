@@ -66,20 +66,20 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune =
     num_lvl <- y_lvl(rec)
     if (num_lvl == 2) {
       mod_syntax <-
-        paste0(prefix, "_model") %>%
+        paste0(prefix, "_spec") %>%
         assign_value(!!rlang::call2("logistic_reg", !!!prm)) %>%
         pipe_value(set_mode("classification"))
 
     } else {
       mod_syntax <-
-        paste0(prefix, "_model") %>%
+        paste0(prefix, "_spec") %>%
         assign_value(!!rlang::call2("multinom_reg", !!!prm)) %>%
         pipe_value(set_mode("classification"))
 
     }
   } else {
     mod_syntax <-
-      paste0(prefix, "_model") %>%
+      paste0(prefix, "_spec") %>%
       assign_value(!!rlang::call2("linear_reg", !!!prm)) %>%
       pipe_value(set_mode("regression"))
   }
@@ -142,7 +142,7 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE, tune
   }
 
   mod_syntax <-
-    paste0(prefix, "_model") %>%
+    paste0(prefix, "_spec") %>%
     assign_value(!!rlang::call2("boost_tree", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("xgboost"))
@@ -188,7 +188,7 @@ use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE, tune = TRU
   }
 
   mod_syntax <-
-    paste0(prefix, "_model") %>%
+    paste0(prefix, "_spec") %>%
     assign_value(!!rlang::call2("nearest_neighbor", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("kknn"))
@@ -227,7 +227,7 @@ use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE, tune =
   }
 
   mod_syntax <-
-    paste0(prefix, "_model") %>%
+    paste0(prefix, "_spec") %>%
     assign_value(!!rlang::call2("rand_forest", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("ranger"))
@@ -275,7 +275,7 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE, tune = T
   }
 
   mod_syntax <-
-    paste0(prefix, "_model") %>%
+    paste0(prefix, "_spec") %>%
     assign_value(!!rlang::call2("mars", !!!prm)) %>%
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("earth"))

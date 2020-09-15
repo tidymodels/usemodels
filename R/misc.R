@@ -135,7 +135,7 @@ template_workflow <- function(prefix) {
   paste0(prefix, "_workflow") %>%
     assign_value(workflow()) %>%
     pipe_value(add_recipe(!!rlang::sym(paste0(prefix, "_recipe")))) %>%
-    pipe_value(add_model(!!rlang::sym(paste0(prefix, "_model"))))
+    pipe_value(add_model(!!rlang::sym(paste0(prefix, "_spec"))))
 }
 
 template_tune_with_grid <- function(prefix, colors = TRUE) {
