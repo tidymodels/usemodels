@@ -107,7 +107,6 @@ factor_check <- function(base, rec, add, colors = TRUE) {
     purrr::map_lgl(rec$template %>% dplyr::select(dplyr::one_of(nominal)),
                    rlang::is_character)
   if (any(is_str)) {
-    nominal <- rlang::syms(nominal[is_str])
     selector <- rlang::expr(one_of(!!!nominal))
     step_expr <- rlang::expr(step_string2factor(!!selector))
     base <-
