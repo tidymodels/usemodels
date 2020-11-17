@@ -90,7 +90,7 @@ object that can be edited or updated as the data require." />
         <a class="navbar-brand" href="../index.html">usemodels</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
         </div>
       </div>
     </div>
@@ -139,50 +139,59 @@ for their respective techniques. Each creates a prototype recipe and workflow
 object that can be edited or updated as the data require.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>use_glmnet</span>(
-  <span class='kw'>formula</span>,
-  <span class='kw'>data</span>,
-  prefix = <span class='st'>"glmnet"</span>,
-  verbose = <span class='fl'>FALSE</span>,
-  tune = <span class='fl'>TRUE</span>,
-  colors = <span class='fl'>TRUE</span>
-)
+    <pre class="usage"><span class='fu'>use_glmnet</span><span class='op'>(</span>
+  <span class='va'>formula</span>,
+  <span class='va'>data</span>,
+  prefix <span class='op'>=</span> <span class='st'>"glmnet"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tune <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  colors <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
-<span class='fu'>use_xgboost</span>(
-  <span class='kw'>formula</span>,
-  <span class='kw'>data</span>,
-  prefix = <span class='st'>"xgboost"</span>,
-  verbose = <span class='fl'>FALSE</span>,
-  tune = <span class='fl'>TRUE</span>,
-  colors = <span class='fl'>TRUE</span>
-)
+<span class='fu'>use_xgboost</span><span class='op'>(</span>
+  <span class='va'>formula</span>,
+  <span class='va'>data</span>,
+  prefix <span class='op'>=</span> <span class='st'>"xgboost"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tune <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  colors <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
-<span class='fu'>use_kknn</span>(
-  <span class='kw'>formula</span>,
-  <span class='kw'>data</span>,
-  prefix = <span class='st'>"kknn"</span>,
-  verbose = <span class='fl'>FALSE</span>,
-  tune = <span class='fl'>TRUE</span>,
-  colors = <span class='fl'>TRUE</span>
-)
+<span class='fu'>use_kknn</span><span class='op'>(</span>
+  <span class='va'>formula</span>,
+  <span class='va'>data</span>,
+  prefix <span class='op'>=</span> <span class='st'>"kknn"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tune <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  colors <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
-<span class='fu'>use_ranger</span>(
-  <span class='kw'>formula</span>,
-  <span class='kw'>data</span>,
-  prefix = <span class='st'>"ranger"</span>,
-  verbose = <span class='fl'>FALSE</span>,
-  tune = <span class='fl'>TRUE</span>,
-  colors = <span class='fl'>TRUE</span>
-)
+<span class='fu'>use_ranger</span><span class='op'>(</span>
+  <span class='va'>formula</span>,
+  <span class='va'>data</span>,
+  prefix <span class='op'>=</span> <span class='st'>"ranger"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tune <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  colors <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
-<span class='fu'>use_earth</span>(
-  <span class='kw'>formula</span>,
-  <span class='kw'>data</span>,
-  prefix = <span class='st'>"earth"</span>,
-  verbose = <span class='fl'>FALSE</span>,
-  tune = <span class='fl'>TRUE</span>,
-  colors = <span class='fl'>TRUE</span>
-)</pre>
+<span class='fu'>use_earth</span><span class='op'>(</span>
+  <span class='va'>formula</span>,
+  <span class='va'>data</span>,
+  prefix <span class='op'>=</span> <span class='st'>"earth"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tune <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  colors <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+
+<span class='fu'>use_cubist</span><span class='op'>(</span>
+  <span class='va'>formula</span>,
+  <span class='va'>data</span>,
+  prefix <span class='op'>=</span> <span class='st'>"cubist"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tune <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  colors <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -232,9 +241,9 @@ that recipe step is not included in the output.</p>
 every data analysis. It has reasonable defaults.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://allisonhorst.github.io/palmerpenguins'>palmerpenguins</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>penguins</span>)
-<span class='fu'>use_glmnet</span>(<span class='kw'>species</span> <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>penguins</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>)</span>
+<span class='fu'>use_glmnet</span><span class='op'>(</span><span class='va'>species</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>penguins</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; glmnet_recipe &lt;- 
 #&gt;   recipe(formula = species ~ ., data = penguins) %&gt;% 
 #&gt;   step_novel(all_nominal(), -all_outcomes()) %&gt;% 
@@ -257,7 +266,7 @@ every data analysis. It has reasonable defaults.</p>
 #&gt; 
 #&gt; glmnet_tune &lt;- 
 #&gt;   tune_grid(glmnet_workflow, resamples = <span style='color: #BB0000;'>stop("add your rsample object")</span><span>, grid = glmnet_grid) 
-#&gt; </div><div class='input'><span class='fu'>use_glmnet</span>( <span class='kw'>body_mass_g</span> <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>penguins</span>, verbose = <span class='fl'>TRUE</span>, prefix = <span class='st'>"gunter"</span>)
+#&gt; </div><div class='input'><span class='fu'>use_glmnet</span><span class='op'>(</span> <span class='va'>body_mass_g</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>penguins</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span>, prefix <span class='op'>=</span> <span class='st'>"gunter"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; gunter_recipe &lt;- 
 #&gt;   recipe(formula = body_mass_g ~ ., data = penguins) %&gt;% 
 #&gt;   step_novel(all_nominal(), -all_outcomes()) %&gt;% 

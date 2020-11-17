@@ -43,7 +43,7 @@
         <a class="navbar-brand" href="index.html">usemodels</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
         </div>
       </div>
     </div>
@@ -114,14 +114,14 @@
 <p>The recipe steps that are used (if any) depend on the type of data as well as the model. In this case, the first two steps handle the fact that <code>Species</code> is a factor-encoded predictor (and <code>glmnet</code> requires all numeric predictors). The last two steps are added because, for this model, the predictors should be on the same scale to be properly regularized.</p>
 <p>The package includes these templates:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">ls</span>(<span class="st">"package:usemodels"</span>, <span class="dt">pattern =</span> <span class="st">"use_"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>[<span class="dv">1</span>] <span class="st">"use_earth"</span>   <span class="st">"use_glmnet"</span>  <span class="st">"use_kknn"</span>    <span class="st">"use_ranger"</span>  <span class="st">"use_xgboost"</span></span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2"></a>[<span class="dv">1</span>] <span class="st">"use_cubist"</span>  <span class="st">"use_earth"</span>   <span class="st">"use_glmnet"</span>  <span class="st">"use_kknn"</span>    <span class="st">"use_ranger"</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>[<span class="dv">6</span>] <span class="st">"use_xgboost"</span></span></code></pre></div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install usemodels with:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"tidymodels/usemodels"</span>)
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"tidymodels/usemodels"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
