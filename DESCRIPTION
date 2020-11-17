@@ -1,6 +1,6 @@
 Package: usemodels
 Title: Boilerplate Code for 'Tidymodels' Analyses
-Version: 0.0.1.9000
+Version: 0.1.0
 Authors@R: 
     c(
     person(
@@ -12,7 +12,7 @@ Authors@R:
         ),
     person("RStudio", role = "cph"))
 Description: Code snippets to fit models using the tidymodels framework can be easily created for a given data set. 
-URL: https://tidymodels.github.io/usemodels/, https://github.com/tidymodels/usemodels
+URL: https://usemodels.tidymodels.org/, https://github.com/tidymodels/usemodels
 BugReports: https://github.com/tidymodels/usemodels/issues
 License: MIT + file LICENSE
 Suggests: 
@@ -23,12 +23,12 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.1.9000
 Language: en-US
 Imports: 
-    tune (>= 0.1.1),
+    tune (>= 0.1.2),
     cli,
-    recipes,
+    recipes (>= 0.1.15),
     rlang,
     purrr,
     dplyr,
