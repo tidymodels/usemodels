@@ -47,7 +47,7 @@ verify_models <- function(model, prefix, tune, verbose) {
 test_that('all model templates', {
   local_edition(3)
 
-  models <- c("glmnet", "xgboost", "ranger", "kknn", "earth")
+  models <- c("glmnet", "xgboost", "ranger", "kknn", "earth", "cubist")
 
   test_config <-
     expand.grid(

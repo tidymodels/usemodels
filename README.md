@@ -57,7 +57,8 @@ The package includes these templates:
 
 ``` r
 > ls("package:usemodels", pattern = "use_")
-[1] "use_earth"   "use_glmnet"  "use_kknn"    "use_ranger"  "use_xgboost"
+[1] "use_cubist"  "use_earth"   "use_glmnet"  "use_kknn"    "use_ranger" 
+[6] "use_xgboost"
 ```
 
 ## Installation

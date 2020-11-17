@@ -309,4 +309,48 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE, tune = T
   invisible(NULL)
 }
 
+# ------------------------------------------------------------------------------
+
+#' @export
+#' @rdname templates
+use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE, tune = TRUE, colors = TRUE) {
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipes::recipe(formula, data)
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors= colors)
+
+  rec_syntax <- pipe_value(rec_syntax, step_zv(all_predictors()))
+
+  if (tune) {
+    prm <- rlang::exprs(committees = tune(), neighbors = tune())
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("cubist_rules", !!!prm)) %>%
+    pipe_value(set_engine("Cubist"))
+
+  cat("library(rules)\n\n")
+  cat(rec_syntax, "\n\n")
+  cat(mod_syntax, "\n\n")
+  cat(template_workflow(prefix), "\n\n")
+  if (tune) {
+    cubist_grid <- rlang::expr(
+      cubist_grid <-
+        tidyr::crossing(committees = c(1:9, (1:5) * 10), neighbors = c(0, 3, 6, 9))
+    )
+    cubist_grid[[2]] <- rlang::sym(paste0(prefix, "_grid"))
+    cat(rlang::expr_text(cubist_grid, width = expr_width), "\n\n")
+    cat(template_tune_with_grid(prefix, colors = colors), "\n\n")
+  }
+  invisible(NULL)
+}
 
