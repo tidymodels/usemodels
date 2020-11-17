@@ -6,6 +6,7 @@
 \alias{use_kknn}
 \alias{use_ranger}
 \alias{use_earth}
+\alias{use_cubist}
 \title{Functions to create boilerplate code for specific models}
 \usage{
 use_glmnet(
@@ -48,6 +49,15 @@ use_earth(
   formula,
   data,
   prefix = "earth",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE
+)
+
+use_cubist(
+  formula,
+  data,
+  prefix = "cubist",
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE
