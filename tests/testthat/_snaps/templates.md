@@ -4,7 +4,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -28,7 +28,6 @@
       add_recipe(test_config_1_dummies_recipe) %>% 
       add_model(test_config_1_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -36,7 +35,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -60,7 +59,6 @@
       add_recipe(test_config_1_no_dummies_recipe) %>% 
       add_model(test_config_1_no_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -68,7 +66,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -89,7 +87,6 @@
       add_recipe(test_config_2_dummies_recipe) %>% 
       add_model(test_config_2_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -97,7 +94,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -118,7 +115,6 @@
       add_recipe(test_config_2_no_dummies_recipe) %>% 
       add_model(test_config_2_no_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -126,7 +122,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_3_dummies_spec <- 
       rand_forest(trees = 1000) %>% 
@@ -138,7 +134,6 @@
       add_recipe(test_config_3_dummies_recipe) %>% 
       add_model(test_config_3_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -146,7 +141,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_3_no_dummies_spec <- 
       rand_forest(trees = 1000) %>% 
@@ -158,7 +153,6 @@
       add_recipe(test_config_3_no_dummies_recipe) %>% 
       add_model(test_config_3_no_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -166,7 +160,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -190,7 +184,6 @@
       add_recipe(test_config_4_dummies_recipe) %>% 
       add_model(test_config_4_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -198,7 +191,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -222,7 +215,6 @@
       add_recipe(test_config_4_no_dummies_recipe) %>% 
       add_model(test_config_4_no_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -230,7 +222,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -249,7 +241,6 @@
       add_recipe(test_config_5_dummies_recipe) %>% 
       add_model(test_config_5_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -257,7 +248,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -276,7 +267,6 @@
       add_recipe(test_config_5_no_dummies_recipe) %>% 
       add_model(test_config_5_no_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -286,7 +276,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_6_dummies_spec <- 
@@ -298,7 +288,6 @@
       add_recipe(test_config_6_dummies_recipe) %>% 
       add_model(test_config_6_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -308,7 +297,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_6_no_dummies_spec <- 
@@ -320,7 +309,6 @@
       add_recipe(test_config_6_no_dummies_recipe) %>% 
       add_model(test_config_6_no_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -328,7 +316,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -359,7 +347,6 @@
       tune_grid(test_config_7_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_7_dummies_grid) 
     
-    NULL
 
 ---
 
@@ -367,7 +354,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -398,7 +385,6 @@
       tune_grid(test_config_7_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_7_no_dummies_grid) 
     
-    NULL
 
 ---
 
@@ -406,7 +392,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -433,7 +419,6 @@
       tune_grid(test_config_8_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
@@ -441,7 +426,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -468,7 +453,6 @@
       tune_grid(test_config_8_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
@@ -476,7 +460,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_9_dummies_spec <- 
       rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
@@ -493,7 +477,6 @@
       tune_grid(test_config_9_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
@@ -501,7 +484,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_9_no_dummies_spec <- 
       rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
@@ -518,7 +501,6 @@
       tune_grid(test_config_9_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
@@ -526,7 +508,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -555,7 +537,6 @@
       tune_grid(test_config_10_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
@@ -563,7 +544,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -592,7 +573,6 @@
       tune_grid(test_config_10_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
@@ -600,7 +580,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -630,7 +610,6 @@
       tune_grid(test_config_11_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_11_dummies_grid) 
     
-    NULL
 
 ---
 
@@ -638,7 +617,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
@@ -668,7 +647,6 @@
       tune_grid(test_config_11_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_11_no_dummies_grid) 
     
-    NULL
 
 ---
 
@@ -678,7 +656,7 @@
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_12_dummies_spec <- 
@@ -697,7 +675,6 @@
       tune_grid(test_config_12_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_12_dummies_grid) 
     
-    NULL
 
 ---
 
@@ -707,7 +684,7 @@
       recipe(formula = species ~ ., data = penguins) %>% 
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_12_no_dummies_spec <- 
@@ -726,13 +703,12 @@
       tune_grid(test_config_12_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_12_no_dummies_grid) 
     
-    NULL
 
 ---
 
     test_config_13_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -748,13 +724,12 @@
       add_recipe(test_config_13_dummies_recipe) %>% 
       add_model(test_config_13_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_13_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -770,13 +745,12 @@
       add_recipe(test_config_13_no_dummies_recipe) %>% 
       add_model(test_config_13_no_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_14_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
@@ -791,13 +765,12 @@
       add_recipe(test_config_14_dummies_recipe) %>% 
       add_model(test_config_14_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_14_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
@@ -812,13 +785,12 @@
       add_recipe(test_config_14_no_dummies_recipe) %>% 
       add_model(test_config_14_no_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_15_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_15_dummies_spec <- 
       rand_forest(trees = 1000) %>% 
@@ -830,13 +802,12 @@
       add_recipe(test_config_15_dummies_recipe) %>% 
       add_model(test_config_15_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_15_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_15_no_dummies_spec <- 
       rand_forest(trees = 1000) %>% 
@@ -848,13 +819,12 @@
       add_recipe(test_config_15_no_dummies_recipe) %>% 
       add_model(test_config_15_no_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_16_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -870,13 +840,12 @@
       add_recipe(test_config_16_dummies_recipe) %>% 
       add_model(test_config_16_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_16_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -892,13 +861,12 @@
       add_recipe(test_config_16_no_dummies_recipe) %>% 
       add_model(test_config_16_no_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_17_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) 
@@ -913,13 +881,12 @@
       add_recipe(test_config_17_dummies_recipe) %>% 
       add_model(test_config_17_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_17_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) 
@@ -934,7 +901,6 @@
       add_recipe(test_config_17_no_dummies_recipe) %>% 
       add_model(test_config_17_no_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -942,7 +908,7 @@
     
     test_config_18_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_18_dummies_spec <- 
@@ -954,7 +920,6 @@
       add_recipe(test_config_18_dummies_recipe) %>% 
       add_model(test_config_18_dummies_spec) 
     
-    NULL
 
 ---
 
@@ -962,7 +927,7 @@
     
     test_config_18_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_18_no_dummies_spec <- 
@@ -974,13 +939,12 @@
       add_recipe(test_config_18_no_dummies_recipe) %>% 
       add_model(test_config_18_no_dummies_spec) 
     
-    NULL
 
 ---
 
     test_config_19_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -1003,13 +967,12 @@
       tune_grid(test_config_19_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_19_dummies_grid) 
     
-    NULL
 
 ---
 
     test_config_19_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -1032,13 +995,12 @@
       tune_grid(test_config_19_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_19_no_dummies_grid) 
     
-    NULL
 
 ---
 
     test_config_20_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
@@ -1059,13 +1021,12 @@
       tune_grid(test_config_20_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
     test_config_20_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
@@ -1086,13 +1047,12 @@
       tune_grid(test_config_20_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
     test_config_21_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_21_dummies_spec <- 
       rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
@@ -1109,13 +1069,12 @@
       tune_grid(test_config_21_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
     test_config_21_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) 
+      step_string2factor(one_of("island")) 
     
     test_config_21_no_dummies_spec <- 
       rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
@@ -1132,13 +1091,12 @@
       tune_grid(test_config_21_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
     test_config_22_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -1159,13 +1117,12 @@
       tune_grid(test_config_22_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
     test_config_22_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) %>% 
@@ -1186,13 +1143,12 @@
       tune_grid(test_config_22_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = stop("add number of candidate points"))
     
-    NULL
 
 ---
 
     test_config_23_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) 
@@ -1213,13 +1169,12 @@
       tune_grid(test_config_23_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_23_dummies_grid) 
     
-    NULL
 
 ---
 
     test_config_23_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_novel(all_nominal(), -all_outcomes()) %>% 
       step_dummy(all_nominal(), -all_outcomes()) %>% 
       step_zv(all_predictors()) 
@@ -1240,7 +1195,6 @@
       tune_grid(test_config_23_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_23_no_dummies_grid) 
     
-    NULL
 
 ---
 
@@ -1248,7 +1202,7 @@
     
     test_config_24_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_24_dummies_spec <- 
@@ -1267,7 +1221,6 @@
       tune_grid(test_config_24_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_24_dummies_grid) 
     
-    NULL
 
 ---
 
@@ -1275,7 +1228,7 @@
     
     test_config_24_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
-      step_string2factor(one_of(island)) %>% 
+      step_string2factor(one_of("island")) %>% 
       step_zv(all_predictors()) 
     
     test_config_24_no_dummies_spec <- 
@@ -1294,5 +1247,4 @@
       tune_grid(test_config_24_no_dummies_workflow, resamples = stop("add your rsample object"), 
         grid = test_config_24_no_dummies_grid) 
     
-    NULL
 
