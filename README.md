@@ -24,8 +24,8 @@ For example, using the palmerpenguins data with a `glmnet` model:
 > use_glmnet(body_mass_g ~ ., data = penguins)
 glmnet_recipe <- 
   recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-  step_novel(all_nominal(), -all_outcomes()) %>% 
-  step_dummy(all_nominal(), -all_outcomes()) %>% 
+  step_novel(all_nominal_predictors()) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
   step_zv(all_predictors()) %>% 
   step_normalize(all_predictors(), -all_nominal()) 
 
@@ -75,17 +75,17 @@ This project is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
-  - For questions and discussions about tidymodels packages, modeling,
+-   For questions and discussions about tidymodels packages, modeling,
     and machine learning, please [post on RStudio
     Community](https://rstd.io/tidymodels-community).
 
-  - If you think you have encountered a bug, please [submit an
+-   If you think you have encountered a bug, please [submit an
     issue](https://github.com/tidymodels/usemodels/issues).
 
-  - Either way, learn how to create and share a
+-   Either way, learn how to create and share a
     [reprex](https://rstd.io/reprex) (a minimal, reproducible example),
     to clearly communicate about your code.
 
-  - Check out further details on [contributing guidelines for tidymodels
+-   Check out further details on [contributing guidelines for tidymodels
     packages](https://www.tidymodels.org/contribute/) and [how to get
     help](https://www.tidymodels.org/help/).
