@@ -5,18 +5,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Regularization methods sum up functions of the model slope 
       ## coefficients. Because of this, the predictor variables should be on 
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_1_dummies_spec <- 
       linear_reg() %>% 
@@ -36,18 +36,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Regularization methods sum up functions of the model slope 
       ## coefficients. Because of this, the predictor variables should be on 
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_1_no_dummies_spec <- 
       multinom_reg() %>% 
@@ -67,14 +67,14 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. However, for this model, binary indicator variables can be 
       ## made for each of the levels of the factors (known as 'one-hot 
       ## encoding'). 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_2_dummies_spec <- 
@@ -95,14 +95,14 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. However, for this model, binary indicator variables can be 
       ## made for each of the levels of the factors (known as 'one-hot 
       ## encoding'). 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_2_no_dummies_spec <- 
@@ -161,18 +161,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Since distance calculations are used, the predictor variables should 
       ## be on the same scale. Before centering and scaling the numeric 
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_4_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -192,18 +192,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Since distance calculations are used, the predictor variables should 
       ## be on the same scale. Before centering and scaling the numeric 
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_4_no_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -223,12 +223,12 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_5_dummies_spec <- 
@@ -249,12 +249,12 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_5_no_dummies_spec <- 
@@ -317,18 +317,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Regularization methods sum up functions of the model slope 
       ## coefficients. Because of this, the predictor variables should be on 
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_7_dummies_spec <- 
       linear_reg(penalty = tune(), mixture = tune()) %>% 
@@ -355,18 +355,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Regularization methods sum up functions of the model slope 
       ## coefficients. Because of this, the predictor variables should be on 
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_7_no_dummies_spec <- 
       multinom_reg(penalty = tune(), mixture = tune()) %>% 
@@ -393,14 +393,14 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. However, for this model, binary indicator variables can be 
       ## made for each of the levels of the factors (known as 'one-hot 
       ## encoding'). 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_8_dummies_spec <- 
@@ -427,14 +427,14 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. However, for this model, binary indicator variables can be 
       ## made for each of the levels of the factors (known as 'one-hot 
       ## encoding'). 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_8_no_dummies_spec <- 
@@ -509,18 +509,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Since distance calculations are used, the predictor variables should 
       ## be on the same scale. Before centering and scaling the numeric 
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_10_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
@@ -545,18 +545,18 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       ## Since distance calculations are used, the predictor variables should 
       ## be on the same scale. Before centering and scaling the numeric 
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_10_no_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
@@ -581,12 +581,12 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_11_dummies_spec <- 
@@ -618,12 +618,12 @@
       ## For modeling, it is preferred to encode qualitative data as factors 
       ## (instead of character). 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
       ## This model requires the predictors to be numeric. The most common 
       ## method to convert qualitative predictors to numeric is to create 
       ## binary indicator variables (aka dummy variables) from these 
       ## predictors. 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_11_no_dummies_spec <- 
@@ -709,10 +709,10 @@
     test_config_13_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_13_dummies_spec <- 
       linear_reg() %>% 
@@ -730,10 +730,10 @@
     test_config_13_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_13_no_dummies_spec <- 
       multinom_reg() %>% 
@@ -751,8 +751,8 @@
     test_config_14_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_14_dummies_spec <- 
@@ -771,8 +771,8 @@
     test_config_14_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_14_no_dummies_spec <- 
@@ -825,10 +825,10 @@
     test_config_16_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_16_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -846,10 +846,10 @@
     test_config_16_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_16_no_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -867,8 +867,8 @@
     test_config_17_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_17_dummies_spec <- 
@@ -887,8 +887,8 @@
     test_config_17_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_17_no_dummies_spec <- 
@@ -945,10 +945,10 @@
     test_config_19_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_19_dummies_spec <- 
       linear_reg(penalty = tune(), mixture = tune()) %>% 
@@ -973,10 +973,10 @@
     test_config_19_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_19_no_dummies_spec <- 
       multinom_reg(penalty = tune(), mixture = tune()) %>% 
@@ -1001,8 +1001,8 @@
     test_config_20_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_20_dummies_spec <- 
@@ -1027,8 +1027,8 @@
     test_config_20_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
       step_zv(all_predictors()) 
     
     test_config_20_no_dummies_spec <- 
@@ -1097,10 +1097,10 @@
     test_config_22_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_22_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
@@ -1123,10 +1123,10 @@
     test_config_22_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_22_no_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
@@ -1149,8 +1149,8 @@
     test_config_23_dummies_recipe <- 
       recipe(formula = body_mass_g ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_23_dummies_spec <- 
@@ -1175,8 +1175,8 @@
     test_config_23_no_dummies_recipe <- 
       recipe(formula = species ~ ., data = penguins) %>% 
       step_string2factor(one_of("island")) %>% 
-      step_novel(all_nominal(), -all_outcomes()) %>% 
-      step_dummy(all_nominal(), -all_outcomes()) %>% 
+      step_novel(all_nominal_predictors()) %>% 
+      step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) 
     
     test_config_23_no_dummies_spec <- 
