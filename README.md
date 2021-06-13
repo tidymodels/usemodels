@@ -27,7 +27,7 @@ glmnet_recipe <-
   step_novel(all_nominal_predictors()) %>% 
   step_dummy(all_nominal_predictors()) %>% 
   step_zv(all_predictors()) %>% 
-  step_normalize(all_predictors(), -all_nominal()) 
+  step_normalize(all_numeric_predictors()) 
 
 glmnet_spec <- 
   linear_reg(penalty = tune(), mixture = tune()) %>% 

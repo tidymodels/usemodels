@@ -98,7 +98,7 @@ add_steps_dummy_vars <- function(base, hot = FALSE, add = FALSE, colors = TRUE) 
 add_steps_normalization <- function(base) {
   base %>%
     pipe_value(step_zv(all_predictors())) %>%
-    pipe_value(step_normalize(all_predictors(), -all_nominal()))
+    pipe_value(step_normalize(all_numeric_predictors()))
 }
 factor_check <- function(base, rec, add, colors = TRUE) {
   var_roles <- summary(rec)

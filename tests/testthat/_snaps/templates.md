@@ -16,7 +16,7 @@
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_1_dummies_spec <- 
       linear_reg() %>% 
@@ -47,7 +47,7 @@
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_1_no_dummies_spec <- 
       multinom_reg() %>% 
@@ -172,7 +172,7 @@
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_4_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -203,7 +203,7 @@
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_4_no_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -328,7 +328,7 @@
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_7_dummies_spec <- 
       linear_reg(penalty = tune(), mixture = tune()) %>% 
@@ -366,7 +366,7 @@
       ## the same scale. Before centering and scaling the numeric predictors, 
       ## any predictors with a single unique value are filtered out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_7_no_dummies_spec <- 
       multinom_reg(penalty = tune(), mixture = tune()) %>% 
@@ -520,7 +520,7 @@
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_10_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
@@ -556,7 +556,7 @@
       ## predictors, any predictors with a single unique value are filtered 
       ## out. 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_10_no_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
@@ -712,7 +712,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_13_dummies_spec <- 
       linear_reg() %>% 
@@ -733,7 +733,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_13_no_dummies_spec <- 
       multinom_reg() %>% 
@@ -828,7 +828,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_16_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -849,7 +849,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_16_no_dummies_spec <- 
       nearest_neighbor() %>% 
@@ -948,7 +948,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_19_dummies_spec <- 
       linear_reg(penalty = tune(), mixture = tune()) %>% 
@@ -976,7 +976,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_19_no_dummies_spec <- 
       multinom_reg(penalty = tune(), mixture = tune()) %>% 
@@ -1100,7 +1100,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_22_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
@@ -1126,7 +1126,7 @@
       step_novel(all_nominal_predictors()) %>% 
       step_dummy(all_nominal_predictors()) %>% 
       step_zv(all_predictors()) %>% 
-      step_normalize(all_predictors(), -all_nominal()) 
+      step_normalize(all_numeric_predictors()) 
     
     test_config_22_no_dummies_spec <- 
       nearest_neighbor(neighbors = tune(), weight_func = tune()) %>% 
