@@ -27,7 +27,7 @@ Given a simple formula and a data set, the `use_*` functions can create code tha
 
 For example, using the palmerpenguins data with a `glmnet` model: 
 
-```{r glmnet}
+```{r glmnet, message=FALSE}
 library(usemodels)
 library(palmerpenguins)
 data(penguins)
