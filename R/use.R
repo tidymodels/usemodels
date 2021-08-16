@@ -27,10 +27,12 @@
 #' The syntax is opinionated and should not be considered the exact answer for
 #' every data analysis. It has reasonable defaults.
 #' @examples
-#' library(palmerpenguins)
-#' data(penguins)
-#' use_glmnet(species ~ ., data = penguins)
-#' use_glmnet( body_mass_g ~ ., data = penguins, verbose = TRUE, prefix = "gunter")
+#' library(modeldata)
+#' data(ad_data)
+#' use_glmnet(Class ~ ., data = ad_data)
+#'
+#' data(Sacramento)
+#' use_glmnet(price ~ ., data = Sacramento, verbose = TRUE, prefix = "sac_homes")
 #' @export
 #' @rdname templates
 use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune = TRUE, colors = TRUE) {
