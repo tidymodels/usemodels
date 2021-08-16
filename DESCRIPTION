@@ -26,7 +26,6 @@ Imports:
 Suggests: 
     covr,
     modeldata,
-    palmerpenguins,
     spelling,
     testthat
 Config/testthat/edition: 3
