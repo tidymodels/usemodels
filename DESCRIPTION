@@ -2,35 +2,35 @@ Package: usemodels
 Title: Boilerplate Code for 'Tidymodels' Analyses
 Version: 0.1.0.9000
 Authors@R: 
-    c(
-    person(
-        given = "Max",
-        family = "Kuhn",
-        email = "max@rstudio.com",
-        comment = c(ORCID = "0000-0003-2402-136X"),
-        role = c("aut", "cre")
-        ),
-    person("RStudio", role = "cph"))
-Description: Code snippets to fit models using the tidymodels framework can be easily created for a given data set. 
-URL: https://usemodels.tidymodels.org/, https://github.com/tidymodels/usemodels
-BugReports: https://github.com/tidymodels/usemodels/issues
+    c(person(given = "Max",
+             family = "Kuhn",
+             role = c("aut", "cre"),
+             email = "max@rstudio.com",
+             comment = c(ORCID = "0000-0003-2402-136X")),
+      person(given = "RStudio",
+             role = "cph"))
+Description: Code snippets to fit models using the tidymodels framework
+    can be easily created for a given data set.
 License: MIT + file LICENSE
-Suggests: 
-    testthat,
-    spelling,
-    covr,
-    palmerpenguins
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1.9000
-Language: en-US
+URL: https://usemodels.tidymodels.org/,
+    https://github.com/tidymodels/usemodels
+BugReports: https://github.com/tidymodels/usemodels/issues
 Imports: 
-    tune (>= 0.1.2),
     cli,
+    dplyr,
+    purrr,
     recipes (>= 0.1.15),
     rlang,
-    purrr,
-    dplyr,
-    tidyr
+    tidyr,
+    tune (>= 0.1.2)
+Suggests: 
+    covr,
+    modeldata,
+    spelling,
+    testthat
 Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1.9001

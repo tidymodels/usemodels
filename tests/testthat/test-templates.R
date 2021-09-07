@@ -1,4 +1,4 @@
-library(palmerpenguins)
+library(modeldata)
 data("penguins")
 
 penguins$island <- as.character(penguins$island)
