@@ -6,7 +6,7 @@
 [![R build
 status](https://github.com/tidymodels/usemodels/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/usemodels/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/tidymodels/usemodel/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/usemodel?branch=master)
+coverage](https://codecov.io/gh/tidymodels/usemodel/branch/main/graph/badge.svg)](https://codecov.io/gh/tidymodels/usemodel?branch=main)
 ![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
 
 The usemodels package is a helpful way of quickly creating code snippets
