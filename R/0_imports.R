@@ -1,8 +1,8 @@
 
 #' @import rlang
-#' @import recipes
 #' @import tune
 #' @importFrom purrr map_lgl
+#' @importFrom recipes recipe %>% all_predictors
 #' @importFrom dplyr select one_of pull
 #' @importFrom utils globalVariables
 
