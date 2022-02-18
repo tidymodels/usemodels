@@ -17,7 +17,7 @@
 #' printed.
 #' @param colors A single logical for coloring warnings and code snippets that
 #'  require the users attention (ignored when `colors = FALSE`)
-#' @param clip_board A single logical for whether the code output should be
+#' @param clipboard A single logical for whether the code output should be
 #' sent to the clip board or printed in the console.
 #' @return Invisible `NULL` but code is printed to the console.
 #' @details
@@ -38,10 +38,11 @@
 #' @export
 #' @rdname templates
 use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
-                       tune = TRUE, colors = TRUE, clip_board = FALSE) {
+                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
 
-  colors <- check_color(colors, clip_board)
-  pth <- output_loc(clip_board)
+  check_clipboard()
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
   on.exit(unlink(pth))
 
   rec_cl <- initial_recipe_call(match.call())
@@ -114,7 +115,7 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
     route(rlang::expr_text(glmn_grid, width = expr_width), path = pth)
     route(template_tune_with_grid(prefix, colors = colors), path = pth)
   }
-  clip_board_output(pth)
+  clipboard_output(pth)
   invisible(NULL)
 }
 

@@ -194,8 +194,8 @@ initial_recipe_call <- function(cl) {
   rec_cl
 }
 
-output_loc <- function(clip_board) {
-  if (clip_board) {
+output_loc <- function(clipboard) {
+  if (clipboard) {
     res <- tempfile(pattern = "usemodels_")
   } else {
     res <- ""
@@ -208,7 +208,7 @@ route <- function(..., path) {
   invisible(NULL)
 }
 
-clip_board_output <- function(pth) {
+clipboard_output <- function(pth) {
   if (pth == "") {
     return(invisible(NULL))
   }
@@ -223,4 +223,14 @@ check_color <- function(cls, clip) {
     cls <- FALSE
   }
   cls
+}
+
+check_clipboard <- function() {
+  # from reprex_clipboard
+  y <- clipr::clipr_available()
+  if (isFALSE(y)) {
+    clipr::dr_clipr()
+    rlang::abort("Please use `clipboard = FALSE`")
+  }
+  invisible(NULL)
 }

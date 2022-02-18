@@ -16,7 +16,7 @@ use_glmnet(
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE,
-  clip_board = FALSE
+  clipboard = FALSE
 )
 
 use_xgboost(
@@ -83,7 +83,7 @@ printed.}
 \item{colors}{A single logical for coloring warnings and code snippets that
 require the users attention (ignored when \code{colors = FALSE})}
 
-\item{clip_board}{A single logical for whether the code output should be
+\item{clipboard}{A single logical for whether the code output should be
 sent to the clip board or printed in the console.}
 }
 \value{
