@@ -47,7 +47,9 @@ no_dummy_clip_template <- function(model, prefix, verbose, tune) {
 verify_models <- function(model, prefix, tune, verbose) {
   # These are automatically skipped on CRAN
   expect_snapshot(   dummy_clip_template(model, prefix, verbose, tune))
-  expect_snapshot(no_dummy_clip_template(model, prefix, verbose, tune))
+  if (model != "cubist") {
+    expect_snapshot(no_dummy_clip_template(model, prefix, verbose, tune))
+  }
 }
 
 

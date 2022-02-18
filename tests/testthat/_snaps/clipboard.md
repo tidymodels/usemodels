@@ -336,31 +336,6 @@
 ---
 
     Code
-      no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
-      v code is on the clipboard.
-    Output
-       [1] "library(rules)"                                                           
-       [2] ""                                                                         
-       [3] "test_config_6_no_dummies_recipe <- "                                      
-       [4] "  recipe(formula = species ~ ., data = penguins, clipboard = TRUE) %>% "  
-       [5] "  ## For modeling, it is preferred to encode qualitative data as factors "
-       [6] "  ## (instead of character). "                                            
-       [7] "  step_string2factor(one_of(\"island\")) %>% "                            
-       [8] "  step_zv(all_predictors()) "                                             
-       [9] ""                                                                         
-      [10] "test_config_6_no_dummies_spec <- "                                        
-      [11] "  cubist_rules() %>% "                                                    
-      [12] "  set_engine(\"Cubist\") "                                                
-      [13] ""                                                                         
-      [14] "test_config_6_no_dummies_workflow <- "                                    
-      [15] "  workflow() %>% "                                                        
-      [16] "  add_recipe(test_config_6_no_dummies_recipe) %>% "                       
-      [17] "  add_model(test_config_6_no_dummies_spec) "                              
-
----
-
-    Code
       dummy_clip_template(model, prefix, verbose, tune)
     Message <cliMessage>
       v code is on the clipboard.
@@ -773,38 +748,6 @@
 ---
 
     Code
-      no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
-      v code is on the clipboard.
-    Output
-       [1] "library(rules)"                                                                                 
-       [2] ""                                                                                               
-       [3] "test_config_12_no_dummies_recipe <- "                                                           
-       [4] "  recipe(formula = species ~ ., data = penguins, clipboard = TRUE) %>% "                        
-       [5] "  ## For modeling, it is preferred to encode qualitative data as factors "                      
-       [6] "  ## (instead of character). "                                                                  
-       [7] "  step_string2factor(one_of(\"island\")) %>% "                                                  
-       [8] "  step_zv(all_predictors()) "                                                                   
-       [9] ""                                                                                               
-      [10] "test_config_12_no_dummies_spec <- "                                                             
-      [11] "  cubist_rules(committees = tune(), neighbors = tune()) %>% "                                   
-      [12] "  set_engine(\"Cubist\") "                                                                      
-      [13] ""                                                                                               
-      [14] "test_config_12_no_dummies_workflow <- "                                                         
-      [15] "  workflow() %>% "                                                                              
-      [16] "  add_recipe(test_config_12_no_dummies_recipe) %>% "                                            
-      [17] "  add_model(test_config_12_no_dummies_spec) "                                                   
-      [18] ""                                                                                               
-      [19] "test_config_12_no_dummies_grid <- tidyr::crossing(committees = c(1:9, (1:5) * "                 
-      [20] "    10), neighbors = c(0, 3, 6, 9)) "                                                           
-      [21] ""                                                                                               
-      [22] "test_config_12_no_dummies_tune <- "                                                             
-      [23] "  tune_grid(test_config_12_no_dummies_workflow, resamples = stop(\"add your rsample object\"), "
-      [24] "    grid = test_config_12_no_dummies_grid) "                                                    
-
----
-
-    Code
       dummy_clip_template(model, prefix, verbose, tune)
     Message <cliMessage>
       v code is on the clipboard.
@@ -1062,29 +1005,6 @@
       [13] "  workflow() %>% "                                                          
       [14] "  add_recipe(test_config_18_dummies_recipe) %>% "                           
       [15] "  add_model(test_config_18_dummies_spec) "                                  
-
----
-
-    Code
-      no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
-      v code is on the clipboard.
-    Output
-       [1] "library(rules)"                                                         
-       [2] ""                                                                       
-       [3] "test_config_18_no_dummies_recipe <- "                                   
-       [4] "  recipe(formula = species ~ ., data = penguins, clipboard = TRUE) %>% "
-       [5] "  step_string2factor(one_of(\"island\")) %>% "                          
-       [6] "  step_zv(all_predictors()) "                                           
-       [7] ""                                                                       
-       [8] "test_config_18_no_dummies_spec <- "                                     
-       [9] "  cubist_rules() %>% "                                                  
-      [10] "  set_engine(\"Cubist\") "                                              
-      [11] ""                                                                       
-      [12] "test_config_18_no_dummies_workflow <- "                                 
-      [13] "  workflow() %>% "                                                      
-      [14] "  add_recipe(test_config_18_no_dummies_recipe) %>% "                    
-      [15] "  add_model(test_config_18_no_dummies_spec) "                           
 
 ---
 
@@ -1411,34 +1331,4 @@
       [20] "test_config_24_dummies_tune <- "                                                             
       [21] "  tune_grid(test_config_24_dummies_workflow, resamples = stop(\"add your rsample object\"), "
       [22] "    grid = test_config_24_dummies_grid) "                                                    
-
----
-
-    Code
-      no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
-      v code is on the clipboard.
-    Output
-       [1] "library(rules)"                                                                                 
-       [2] ""                                                                                               
-       [3] "test_config_24_no_dummies_recipe <- "                                                           
-       [4] "  recipe(formula = species ~ ., data = penguins, clipboard = TRUE) %>% "                        
-       [5] "  step_string2factor(one_of(\"island\")) %>% "                                                  
-       [6] "  step_zv(all_predictors()) "                                                                   
-       [7] ""                                                                                               
-       [8] "test_config_24_no_dummies_spec <- "                                                             
-       [9] "  cubist_rules(committees = tune(), neighbors = tune()) %>% "                                   
-      [10] "  set_engine(\"Cubist\") "                                                                      
-      [11] ""                                                                                               
-      [12] "test_config_24_no_dummies_workflow <- "                                                         
-      [13] "  workflow() %>% "                                                                              
-      [14] "  add_recipe(test_config_24_no_dummies_recipe) %>% "                                            
-      [15] "  add_model(test_config_24_no_dummies_spec) "                                                   
-      [16] ""                                                                                               
-      [17] "test_config_24_no_dummies_grid <- tidyr::crossing(committees = c(1:9, (1:5) * "                 
-      [18] "    10), neighbors = c(0, 3, 6, 9)) "                                                           
-      [19] ""                                                                                               
-      [20] "test_config_24_no_dummies_tune <- "                                                             
-      [21] "  tune_grid(test_config_24_no_dummies_workflow, resamples = stop(\"add your rsample object\"), "
-      [22] "    grid = test_config_24_no_dummies_grid) "                                                    
 
