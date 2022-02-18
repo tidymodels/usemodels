@@ -370,7 +370,9 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
     assign_value(!!rec_cl)
 
   rec <- recipes::recipe(formula, data)
-
+  if (model_mode(rec) != "regression") {
+    rlang::abort("Cubist models are only for regression")
+  }
   rec_syntax <-
     rec_syntax %>%
     factor_check(rec, add = verbose, colors= colors)
