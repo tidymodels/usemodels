@@ -194,4 +194,46 @@ initial_recipe_call <- function(cl) {
   rec_cl
 }
 
+output_loc <- function(clipboard) {
+  if (clipboard) {
+    res <- tempfile(pattern = "usemodels_")
+  } else {
+    res <- ""
+  }
+  res
+}
 
+route <- function(x, path, ...) {
+  cat(x, "\n\n", file = path, append = path != "", ...)
+  invisible(NULL)
+}
+
+clipboard_output <- function(pth) {
+  if (pth == "") {
+    return(invisible(NULL))
+  }
+  code <- readLines(pth)
+  clipr::write_clip(code, object_type = "character")
+  cli::cli_alert_success("code is on the clipboard.")
+  invisible(NULL)
+}
+
+check_color <- function(cls, clip) {
+  if (cls & clip) {
+    cls <- FALSE
+  }
+  cls
+}
+
+check_clipboard <- function(clipboard) {
+  if (!clipboard) {
+    return(invisible(NULL))
+  }
+  # from reprex_clipboard
+  y <- clipr::clipr_available()
+  if (isFALSE(y)) {
+    clipr::dr_clipr()
+    rlang::abort("Please use `clipboard = FALSE`")
+  }
+  invisible(NULL)
+}

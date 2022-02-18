@@ -7,7 +7,8 @@ penguins$island <- as.character(penguins$island)
 
 # Code to loop over all tests and configurations
 
-dummy_template <- function(model, prefix, verbose, tune) {
+dummy_clip_template <- function(model, prefix, verbose, tune) {
+  Sys.setenv(CLIPR_ALLOW = TRUE)
   set.seed(3522) # for models where a seed is set
   rlang::eval_tidy(
     rlang::call2(
@@ -17,12 +18,15 @@ dummy_template <- function(model, prefix, verbose, tune) {
       verbose = enexpr(verbose),
       tune = enexpr(tune),
       prefix = paste0(prefix, "_dummies"),
-      colors = TRUE
+      colors = TRUE,
+      clipboard = TRUE
     )
   )
+  print(clipr::read_clip())
+  clipr::clear_clip()
 }
 
-no_dummy_template <- function(model, prefix, verbose, tune) {
+no_dummy_clip_template <- function(model, prefix, verbose, tune) {
   set.seed(3522) # for models where a seed is set
   rlang::eval_tidy(
     rlang::call2(
@@ -32,21 +36,27 @@ no_dummy_template <- function(model, prefix, verbose, tune) {
       verbose = enexpr(verbose),
       tune = enexpr(tune),
       prefix = paste0(prefix, "_no_dummies"),
-      colors = TRUE
+      colors = TRUE,
+      clipboard = TRUE
     )
   )
+  print(clipr::read_clip())
+  clipr::clear_clip()
 }
 
 verify_models <- function(model, prefix, tune, verbose) {
   # These are automatically skipped on CRAN
-  expect_snapshot(   dummy_template(model, prefix, verbose, tune))
+  expect_snapshot(   dummy_clip_template(model, prefix, verbose, tune))
   if (model != "cubist") {
-    expect_snapshot(no_dummy_template(model, prefix, verbose, tune))
+    expect_snapshot(no_dummy_clip_template(model, prefix, verbose, tune))
   }
 }
 
 
-test_that('all model templates', {
+test_that('all model templates with clipboard', {
+  skip_on_cran()
+  skip_on_os("linux")
+  skip_on_os("windows")
   local_edition(3)
 
   models <- c("glmnet", "xgboost", "ranger", "kknn", "earth", "cubist")

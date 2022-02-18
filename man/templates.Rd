@@ -15,7 +15,8 @@ use_glmnet(
   prefix = "glmnet",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_xgboost(
@@ -24,7 +25,8 @@ use_xgboost(
   prefix = "xgboost",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_kknn(
@@ -33,7 +35,8 @@ use_kknn(
   prefix = "kknn",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_ranger(
@@ -42,7 +45,8 @@ use_ranger(
   prefix = "ranger",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_earth(
@@ -51,7 +55,8 @@ use_earth(
   prefix = "earth",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_cubist(
@@ -60,7 +65,8 @@ use_cubist(
   prefix = "cubist",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 }
 \arguments{
@@ -80,7 +86,10 @@ the printed code explaining why certain lines are used.}
 printed.}
 
 \item{colors}{A single logical for coloring warnings and code snippets that
-require the users attention.}
+require the users attention (ignored when \code{colors = FALSE})}
+
+\item{clipboard}{A single logical for whether the code output should be
+sent to the clip board or printed in the console.}
 }
 \value{
 Invisible \code{NULL} but code is printed to the console.

@@ -16,7 +16,9 @@
 #' @param tune A single logical that controls if code for model tuning should be
 #' printed.
 #' @param colors A single logical for coloring warnings and code snippets that
-#'  require the users attention.
+#'  require the users attention (ignored when `colors = FALSE`)
+#' @param clipboard A single logical for whether the code output should be
+#' sent to the clip board or printed in the console.
 #' @return Invisible `NULL` but code is printed to the console.
 #' @details
 #' Based on the columns in `data`, certain recipe steps printed. For example, if
@@ -35,7 +37,14 @@
 #' use_glmnet(price ~ ., data = Sacramento, verbose = TRUE, prefix = "sac_homes")
 #' @export
 #' @rdname templates
-use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
+                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
     paste0(prefix, "_recipe") %>%
@@ -90,9 +99,9 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune =
     mod_syntax %>%
     pipe_value(set_engine("glmnet"))
 
-  cat(rec_syntax, "\n\n")
-  cat(mod_syntax, "\n\n")
-  cat(template_workflow(prefix), "\n\n")
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
 
   if (tune) {
     glmn_grid <- rlang::expr(
@@ -103,15 +112,23 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune =
         )
     )
     glmn_grid[[2]] <- rlang::sym(paste0(prefix, "_grid"))
-    cat(rlang::expr_text(glmn_grid, width = expr_width), "\n\n")
-    cat(template_tune_with_grid(prefix, colors = colors), "\n\n")
+    route(rlang::expr_text(glmn_grid, width = expr_width), path = pth)
+    route(template_tune_with_grid(prefix, colors = colors), path = pth)
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
 #' @export
 #' @rdname templates
-use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
+                        tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
     paste0(prefix, "_recipe") %>%
@@ -149,12 +166,13 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE, tune
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("xgboost"))
 
-  cat(rec_syntax, "\n\n")
-  cat(mod_syntax, "\n\n")
-  cat(template_workflow(prefix), "\n\n")
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
   if (tune) {
-    cat(template_tune_no_grid(prefix, colors = colors), "\n\n", sep = "")
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -162,7 +180,14 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE, tune
 
 #' @export
 #' @rdname templates
-use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE,
+                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
     paste0(prefix, "_recipe") %>%
@@ -195,12 +220,13 @@ use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE, tune = TRU
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("kknn"))
 
-  cat(rec_syntax, "\n\n")
-  cat(mod_syntax, "\n\n")
-  cat(template_workflow(prefix), "\n\n")
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
   if (tune) {
-    cat(template_tune_no_grid(prefix, colors = colors), "\n\n", sep = "")
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -208,7 +234,14 @@ use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE, tune = TRU
 
 #' @export
 #' @rdname templates
-use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE,
+                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
     paste0(prefix, "_recipe") %>%
@@ -234,13 +267,13 @@ use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE, tune =
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("ranger"))
 
-  cat(rec_syntax, "\n\n")
-  cat(mod_syntax, "\n\n")
-  cat(template_workflow(prefix), "\n\n")
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
   if (tune) {
-
-    cat(template_tune_no_grid(prefix, colors = colors), "\n\n", sep = "")
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -248,7 +281,14 @@ use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE, tune =
 
 #' @export
 #' @rdname templates
-use_earth <- function(formula, data, prefix = "earth", verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
+                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
     paste0(prefix, "_recipe") %>%
@@ -282,9 +322,9 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE, tune = T
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("earth"))
 
-  cat(rec_syntax, "\n\n")
-  cat(mod_syntax, "\n\n")
-  cat(template_workflow(prefix), "\n\n")
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
   if (tune) {
     # We can only have as many terms as data points but maybe we should
     # give some wiggle room for resampling. Also, we will have a sequence of odd
@@ -305,9 +345,10 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE, tune = T
       add = verbose,
       colors = colors
     )
-    cat(rlang::expr_text(mars_grid, width = expr_width), "\n\n")
-    cat(template_tune_with_grid(prefix, colors = colors), "\n\n")
+    route(rlang::expr_text(mars_grid, width = expr_width), path = pth)
+    route(template_tune_with_grid(prefix, colors = colors), path = pth)
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -315,14 +356,23 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE, tune = T
 
 #' @export
 #' @rdname templates
-use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
+                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
     paste0(prefix, "_recipe") %>%
     assign_value(!!rec_cl)
 
   rec <- recipes::recipe(formula, data)
-
+  if (model_mode(rec) != "regression") {
+    rlang::abort("Cubist models are only for regression")
+  }
   rec_syntax <-
     rec_syntax %>%
     factor_check(rec, add = verbose, colors= colors)
@@ -340,19 +390,20 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE, tune =
     assign_value(!!rlang::call2("cubist_rules", !!!prm)) %>%
     pipe_value(set_engine("Cubist"))
 
-  cat("library(rules)\n\n")
-  cat(rec_syntax, "\n\n")
-  cat(mod_syntax, "\n\n")
-  cat(template_workflow(prefix), "\n\n")
+  route("library(rules)", path = pth, sep = "")
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
   if (tune) {
     cubist_grid <- rlang::expr(
       cubist_grid <-
         tidyr::crossing(committees = c(1:9, (1:5) * 10), neighbors = c(0, 3, 6, 9))
     )
     cubist_grid[[2]] <- rlang::sym(paste0(prefix, "_grid"))
-    cat(rlang::expr_text(cubist_grid, width = expr_width), "\n\n")
-    cat(template_tune_with_grid(prefix, colors = colors), "\n\n")
+    route(rlang::expr_text(cubist_grid, width = expr_width), path = pth)
+    route(template_tune_with_grid(prefix, colors = colors), path = pth)
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
