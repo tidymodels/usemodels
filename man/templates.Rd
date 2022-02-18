@@ -7,6 +7,8 @@
 \alias{use_ranger}
 \alias{use_earth}
 \alias{use_cubist}
+\alias{use_kernlab_svm_rbf}
+\alias{use_kernlab_svm_poly}
 \title{Functions to create boilerplate code for specific models}
 \usage{
 use_glmnet(
@@ -63,6 +65,26 @@ use_cubist(
   formula,
   data,
   prefix = "cubist",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+)
+
+use_kernlab_svm_rbf(
+  formula,
+  data,
+  prefix = "kernlab",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+)
+
+use_kernlab_svm_poly(
+  formula,
+  data,
+  prefix = "kernlab",
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE,

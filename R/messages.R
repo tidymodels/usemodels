@@ -7,6 +7,11 @@ dist_msg <-
     "Since distance calculations are used, the predictor",
     "variables should be on the same scale."
   )
+dot_msg <-
+  paste(
+    "Since dot product calculations are used, the predictor",
+    "variables should be on the same scale."
+  )
 reg_msg <-
   paste(
     "Regularization methods sum up functions of the model slope coefficients.",

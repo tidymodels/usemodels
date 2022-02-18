@@ -3,6 +3,8 @@
 export(use_cubist)
 export(use_earth)
 export(use_glmnet)
+export(use_kernlab_svm_poly)
+export(use_kernlab_svm_rbf)
 export(use_kknn)
 export(use_ranger)
 export(use_xgboost)
