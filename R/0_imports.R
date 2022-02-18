@@ -1,6 +1,7 @@
 
 #' @import rlang
 #' @import tune
+#' @import cli
 #' @importFrom purrr map_lgl
 #' @importFrom recipes recipe %>% all_predictors
 #' @importFrom dplyr select one_of pull
