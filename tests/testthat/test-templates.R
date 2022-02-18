@@ -39,7 +39,9 @@ no_dummy_template <- function(model, prefix, verbose, tune) {
 
 verify_models <- function(model, prefix, tune, verbose) {
   # These are automatically skipped on CRAN
-  expect_snapshot(   dummy_template(model, prefix, verbose, tune))
+  if (model != "C5.0") {
+    expect_snapshot(   dummy_template(model, prefix, verbose, tune))
+  }
   if (model != "cubist") {
     expect_snapshot(no_dummy_template(model, prefix, verbose, tune))
   }
@@ -50,7 +52,7 @@ test_that('all model templates', {
   local_edition(3)
 
   models <- c("glmnet", "xgboost", "ranger", "kknn", "earth", "cubist",
-              "kernlab_svm_poly", "kernlab_svm_rbf")
+              "kernlab_svm_poly", "kernlab_svm_rbf", "C5.0")
 
   test_config <-
     expand.grid(

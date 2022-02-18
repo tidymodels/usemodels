@@ -9,6 +9,7 @@
 \alias{use_cubist}
 \alias{use_kernlab_svm_rbf}
 \alias{use_kernlab_svm_poly}
+\alias{use_C5.0}
 \title{Functions to create boilerplate code for specific models}
 \usage{
 use_glmnet(
@@ -85,6 +86,16 @@ use_kernlab_svm_poly(
   formula,
   data,
   prefix = "kernlab",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+)
+
+use_C5.0(
+  formula,
+  data,
+  prefix = "C50",
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE,

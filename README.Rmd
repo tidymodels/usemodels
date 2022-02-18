@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 # usemodels
 
 [![R build status](https://github.com/tidymodels/usemodels/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/usemodels/actions)
-[![Codecov test coverage](https://codecov.io/gh/tidymodels/usemodel/branch/main/graph/badge.svg)](https://codecov.io/gh/tidymodels/usemodel?branch=main)
+[![Coverage status](https://codecov.io/gh/tidymodels/usemodels/branch/main/graph/badge.svg)](https://codecov.io/github/tidymodels/usemodels?branch=main)
 ![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
 
 
@@ -42,6 +42,8 @@ The package includes these templates:
 ```{r use-list}
 ls("package:usemodels", pattern = "use_")
 ```
+
+You can also copy code to the clipboard using the option `clipboard = TRUE`. 
 
 ## Installation
 
