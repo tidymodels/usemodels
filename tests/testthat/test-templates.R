@@ -46,7 +46,6 @@ verify_models <- function(model, prefix, tune, verbose) {
 
 test_that('all model templates', {
   local_edition(3)
-  skip_on_os("linux")
 
   models <- c("glmnet", "xgboost", "ranger", "kknn", "earth", "cubist")
 
