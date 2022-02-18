@@ -407,3 +407,139 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
   invisible(NULL)
 }
 
+#' @export
+#' @rdname templates
+use_kernlab_svm_rbf <- function(formula, data, prefix = "kernlab", verbose = FALSE,
+                                tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipes::recipe(formula, data)
+
+  rec_syntax <-
+    rec_syntax %>%
+    add_comment(paste(dot_msg, zv_msg), add = verbose, colors = colors) %>%
+    add_steps_normalization()
+
+  mod_mode <- model_mode(rec)
+
+  if (tune) {
+    prm <- rlang::exprs(cost = tune(), rbf_sigma = tune())
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("svm_rbf", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec)))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+#' @export
+#' @rdname templates
+use_kernlab_svm_poly <- function(formula, data, prefix = "kernlab", verbose = FALSE,
+                                 tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipes::recipe(formula, data)
+
+  rec_syntax <-
+    rec_syntax %>%
+    add_comment(paste(dot_msg, zv_msg), add = verbose, colors = colors) %>%
+    add_steps_normalization()
+
+  mod_mode <- model_mode(rec)
+
+  if (tune) {
+    prm <- rlang::exprs(cost = tune(), degree = tune(), scale_factor = tune())
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("svm_poly", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec)))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+#' @export
+#' @rdname templates
+use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
+                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipes::recipe(formula, data)
+  if (model_mode(rec) != "classification") {
+    rlang::abort("C5.0 models are only for classification.")
+  }
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors= colors)
+
+  if (tune) {
+    prm <- rlang::exprs(trees = tune(), min_n = tune())
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("boost_tree", !!!prm)) %>%
+    pipe_value(set_mode("classification")) %>%
+    pipe_value(set_engine("C5.0"))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}

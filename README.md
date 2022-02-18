@@ -5,8 +5,8 @@
 
 [![R build
 status](https://github.com/tidymodels/usemodels/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/usemodels/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/tidymodels/usemodel/branch/main/graph/badge.svg)](https://codecov.io/gh/tidymodels/usemodel?branch=main)
+[![Coverage
+status](https://codecov.io/gh/tidymodels/usemodels/branch/main/graph/badge.svg)](https://codecov.io/github/tidymodels/usemodels?branch=main)
 ![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
 
 The usemodels package is a helpful way of quickly creating code snippets
@@ -57,9 +57,13 @@ The package includes these templates:
 
 ``` r
 > ls("package:usemodels", pattern = "use_")
-[1] "use_cubist"  "use_earth"   "use_glmnet"  "use_kknn"    "use_ranger" 
-[6] "use_xgboost"
+[1] "use_C5.0"             "use_cubist"           "use_earth"           
+[4] "use_glmnet"           "use_kernlab_svm_poly" "use_kernlab_svm_rbf" 
+[7] "use_kknn"             "use_ranger"           "use_xgboost"         
 ```
+
+You can also copy code to the clipboard using the option
+`clipboard = TRUE`.
 
 ## Installation
 

@@ -5,6 +5,13 @@
     Error <rlang_error>
       Cubist models are only for regression
 
+---
+
+    Code
+      use_C5.0(bill_depth_mm ~ ., data = penguins)
+    Error <rlang_error>
+      C5.0 models are only for classification.
+
 # no access to clipboard
 
     Code
