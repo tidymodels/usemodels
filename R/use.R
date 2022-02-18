@@ -172,6 +172,7 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
   if (tune) {
     route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -225,6 +226,7 @@ use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE,
   if (tune) {
     route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -271,6 +273,7 @@ use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE,
   if (tune) {
     route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -345,6 +348,7 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
     route(rlang::expr_text(mars_grid, width = expr_width), path = pth)
     route(template_tune_with_grid(prefix, colors = colors), path = pth)
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
@@ -397,6 +401,7 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
     route(rlang::expr_text(cubist_grid, width = expr_width), path = pth)
     route(template_tune_with_grid(prefix, colors = colors), path = pth)
   }
+  clipboard_output(pth)
   invisible(NULL)
 }
 
