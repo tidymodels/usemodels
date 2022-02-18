@@ -1,5 +1,7 @@
 # usemodels (development version)
 
+* Clipboard access is enabled in all `use_*()` functions using the `clipboard = TRUE` argument (#12).
+
 * Use new `all_nominal_predictors()` selector (#17).
 
 # usemodels 0.1.0
