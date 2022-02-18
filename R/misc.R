@@ -203,8 +203,8 @@ output_loc <- function(clipboard) {
   res
 }
 
-route <- function(..., path) {
-  cat(..., "\n\n", file = path, append = path != "")
+route <- function(x, path, ...) {
+  cat(x, "\n\n", file = path, append = path != "", ...)
   invisible(NULL)
 }
 
@@ -225,7 +225,10 @@ check_color <- function(cls, clip) {
   cls
 }
 
-check_clipboard <- function() {
+check_clipboard <- function(clipboard) {
+  if (!clipboard) {
+    return(invisible(NULL))
+  }
   # from reprex_clipboard
   y <- clipr::clipr_available()
   if (isFALSE(y)) {

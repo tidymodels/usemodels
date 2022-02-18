@@ -25,7 +25,8 @@ use_xgboost(
   prefix = "xgboost",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_kknn(
@@ -34,7 +35,8 @@ use_kknn(
   prefix = "kknn",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_ranger(
@@ -43,7 +45,8 @@ use_ranger(
   prefix = "ranger",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_earth(
@@ -52,7 +55,8 @@ use_earth(
   prefix = "earth",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 
 use_cubist(
@@ -61,7 +65,8 @@ use_cubist(
   prefix = "cubist",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clipboard = FALSE
 )
 }
 \arguments{
