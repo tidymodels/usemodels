@@ -16,7 +16,9 @@
 #' @param tune A single logical that controls if code for model tuning should be
 #' printed.
 #' @param colors A single logical for coloring warnings and code snippets that
-#'  require the users attention.
+#'  require the users attention (ignored when `colors = FALSE`)
+#' @param clip_board A single logical for whether the code output should be
+#' sent to the clip board or printed in the console.
 #' @return Invisible `NULL` but code is printed to the console.
 #' @details
 #' Based on the columns in `data`, certain recipe steps printed. For example, if
@@ -35,7 +37,13 @@
 #' use_glmnet(price ~ ., data = Sacramento, verbose = TRUE, prefix = "sac_homes")
 #' @export
 #' @rdname templates
-use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune = TRUE, colors = TRUE) {
+use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
+                       tune = TRUE, colors = TRUE, clip_board = FALSE) {
+
+  colors <- check_color(colors, clip_board)
+  pth <- output_loc(clip_board)
+  on.exit(unlink(pth))
+
   rec_cl <- initial_recipe_call(match.call())
   rec_syntax <-
     paste0(prefix, "_recipe") %>%
@@ -90,9 +98,9 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune =
     mod_syntax %>%
     pipe_value(set_engine("glmnet"))
 
-  cat(rec_syntax, "\n\n")
-  cat(mod_syntax, "\n\n")
-  cat(template_workflow(prefix), "\n\n")
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
 
   if (tune) {
     glmn_grid <- rlang::expr(
@@ -103,9 +111,10 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE, tune =
         )
     )
     glmn_grid[[2]] <- rlang::sym(paste0(prefix, "_grid"))
-    cat(rlang::expr_text(glmn_grid, width = expr_width), "\n\n")
-    cat(template_tune_with_grid(prefix, colors = colors), "\n\n")
+    route(rlang::expr_text(glmn_grid, width = expr_width), path = pth)
+    route(template_tune_with_grid(prefix, colors = colors), path = pth)
   }
+  clip_board_output(pth)
   invisible(NULL)
 }
 

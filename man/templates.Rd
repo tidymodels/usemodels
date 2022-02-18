@@ -15,7 +15,8 @@ use_glmnet(
   prefix = "glmnet",
   verbose = FALSE,
   tune = TRUE,
-  colors = TRUE
+  colors = TRUE,
+  clip_board = FALSE
 )
 
 use_xgboost(
@@ -80,7 +81,10 @@ the printed code explaining why certain lines are used.}
 printed.}
 
 \item{colors}{A single logical for coloring warnings and code snippets that
-require the users attention.}
+require the users attention (ignored when \code{colors = FALSE})}
+
+\item{clip_board}{A single logical for whether the code output should be
+sent to the clip board or printed in the console.}
 }
 \value{
 Invisible \code{NULL} but code is printed to the console.
