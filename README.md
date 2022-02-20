@@ -3,8 +3,9 @@
 
 # usemodels
 
-[![R build
-status](https://github.com/tidymodels/usemodels/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/usemodels/actions)
+[![R-CMD-check](https://github.com/tidymodels/usemodels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/usemodels/actions/workflows/R-CMD-check.yaml)
+[![Coverage
+status](https://codecov.io/gh/tidymodels/usemodels/branch/main/graph/badge.svg)](https://codecov.io/github/tidymodels/usemodels?branch=main)
 [![Coverage
 status](https://codecov.io/gh/tidymodels/usemodels/branch/main/graph/badge.svg)](https://codecov.io/github/tidymodels/usemodels?branch=main)
 ![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
@@ -87,8 +88,9 @@ By contributing to this project, you agree to abide by its terms.
     issue](https://github.com/tidymodels/usemodels/issues).
 
 -   Either way, learn how to create and share a
-    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html) (a minimal, reproducible example),
-    to clearly communicate about your code.
+    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+    (a minimal, reproducible example), to clearly communicate about your
+    code.
 
 -   Check out further details on [contributing guidelines for tidymodels
     packages](https://www.tidymodels.org/contribute/) and [how to get
