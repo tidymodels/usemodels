@@ -29,7 +29,7 @@ object that can be edited or updated as the data require."><meta name="twitter:c
         <a class="navbar-brand" href="../index.html">usemodels</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of <a href="https://tidymodels.org" class="external-link">tidymodels</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.0.9000</span>
         </div>
       </div>
     </div>
@@ -74,7 +74,8 @@ object that can be edited or updated as the data require.</p>
   prefix <span class="op">=</span> <span class="st">"glmnet"</span>,
   verbose <span class="op">=</span> <span class="cn">FALSE</span>,
   tune <span class="op">=</span> <span class="cn">TRUE</span>,
-  colors <span class="op">=</span> <span class="cn">TRUE</span>
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
 <span class="fu">use_xgboost</span><span class="op">(</span>
@@ -83,7 +84,8 @@ object that can be edited or updated as the data require.</p>
   prefix <span class="op">=</span> <span class="st">"xgboost"</span>,
   verbose <span class="op">=</span> <span class="cn">FALSE</span>,
   tune <span class="op">=</span> <span class="cn">TRUE</span>,
-  colors <span class="op">=</span> <span class="cn">TRUE</span>
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
 <span class="fu">use_kknn</span><span class="op">(</span>
@@ -92,7 +94,8 @@ object that can be edited or updated as the data require.</p>
   prefix <span class="op">=</span> <span class="st">"kknn"</span>,
   verbose <span class="op">=</span> <span class="cn">FALSE</span>,
   tune <span class="op">=</span> <span class="cn">TRUE</span>,
-  colors <span class="op">=</span> <span class="cn">TRUE</span>
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
 <span class="fu">use_ranger</span><span class="op">(</span>
@@ -101,7 +104,8 @@ object that can be edited or updated as the data require.</p>
   prefix <span class="op">=</span> <span class="st">"ranger"</span>,
   verbose <span class="op">=</span> <span class="cn">FALSE</span>,
   tune <span class="op">=</span> <span class="cn">TRUE</span>,
-  colors <span class="op">=</span> <span class="cn">TRUE</span>
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
 <span class="fu">use_earth</span><span class="op">(</span>
@@ -110,7 +114,8 @@ object that can be edited or updated as the data require.</p>
   prefix <span class="op">=</span> <span class="st">"earth"</span>,
   verbose <span class="op">=</span> <span class="cn">FALSE</span>,
   tune <span class="op">=</span> <span class="cn">TRUE</span>,
-  colors <span class="op">=</span> <span class="cn">TRUE</span>
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
 <span class="fu">use_cubist</span><span class="op">(</span>
@@ -119,7 +124,38 @@ object that can be edited or updated as the data require.</p>
   prefix <span class="op">=</span> <span class="st">"cubist"</span>,
   verbose <span class="op">=</span> <span class="cn">FALSE</span>,
   tune <span class="op">=</span> <span class="cn">TRUE</span>,
-  colors <span class="op">=</span> <span class="cn">TRUE</span>
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+
+<span class="fu">use_kernlab_svm_rbf</span><span class="op">(</span>
+  <span class="va">formula</span>,
+  <span class="va">data</span>,
+  prefix <span class="op">=</span> <span class="st">"kernlab"</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  tune <span class="op">=</span> <span class="cn">TRUE</span>,
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+
+<span class="fu">use_kernlab_svm_poly</span><span class="op">(</span>
+  <span class="va">formula</span>,
+  <span class="va">data</span>,
+  prefix <span class="op">=</span> <span class="st">"kernlab"</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  tune <span class="op">=</span> <span class="cn">TRUE</span>,
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+
+<span class="fu">use_C5.0</span><span class="op">(</span>
+  <span class="va">formula</span>,
+  <span class="va">data</span>,
+  prefix <span class="op">=</span> <span class="st">"C50"</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  tune <span class="op">=</span> <span class="cn">TRUE</span>,
+  colors <span class="op">=</span> <span class="cn">TRUE</span>,
+  clipboard <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -142,7 +178,10 @@ the printed code explaining why certain lines are used.</p></dd>
 printed.</p></dd>
 <dt>colors</dt>
 <dd><p>A single logical for coloring warnings and code snippets that
-require the users attention.</p></dd>
+require the users attention (ignored when <code>colors = FALSE</code>)</p></dd>
+<dt>clipboard</dt>
+<dd><p>A single logical for whether the code output should be
+sent to the clip board or printed in the console.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -160,18 +199,18 @@ every data analysis. It has reasonable defaults.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/" class="external-link">palmerpenguins</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">use_glmnet</span><span class="op">(</span><span class="va">species</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://modeldata.tidymodels.org" class="external-link">modeldata</a></span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">ad_data</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">use_glmnet</span><span class="op">(</span><span class="va">Class</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">ad_data</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> glmnet_recipe &lt;- </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = species ~ ., data = penguins) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = Class ~ ., data = ad_data) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_novel(all_nominal_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_dummy(all_nominal_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_zv(all_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_normalize(all_numeric_predictors()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> glmnet_spec &lt;- </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   multinom_reg(penalty = tune(), mixture = tune()) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   logistic_reg(penalty = tune(), mixture = tune()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   set_mode("classification") %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   set_engine("glmnet") </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -186,9 +225,11 @@ every data analysis. It has reasonable defaults.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> glmnet_tune &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   tune_grid(glmnet_workflow, resamples = <span style="color: #BB0000;">stop("add your rsample object")</span>, grid = glmnet_grid) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">use_glmnet</span><span class="op">(</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">penguins</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, prefix <span class="op">=</span> <span class="st">"gunter"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gunter_recipe &lt;- </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = body_mass_g ~ ., data = penguins) %&gt;% </span>
+<span class="r-in"></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Sacramento</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">use_glmnet</span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Sacramento</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, prefix <span class="op">=</span> <span class="st">"sac_homes"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_recipe &lt;- </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = price ~ ., data = Sacramento) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_novel(all_nominal_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## This model requires the predictors to be numeric. The most common</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## method to convert qualitative predictors to numeric is to create</span> </span>
@@ -202,21 +243,22 @@ every data analysis. It has reasonable defaults.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_zv(all_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_normalize(all_numeric_predictors()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gunter_spec &lt;- </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_spec &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   linear_reg(penalty = tune(), mixture = tune()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   set_mode("regression") %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   set_engine("glmnet") </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gunter_workflow &lt;- </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_workflow &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   workflow() %&gt;% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   add_recipe(gunter_recipe) %&gt;% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   add_model(gunter_spec) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   add_recipe(sac_homes_recipe) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   add_model(sac_homes_spec) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gunter_grid &lt;- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     0.2, 0.4, 0.6, 0.8, 1)) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_grid &lt;- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     mixture = c(0.05, 0.2, 0.4, 0.6, 0.8, 1)) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gunter_tune &lt;- </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   tune_grid(gunter_workflow, resamples = <span style="color: #BB0000;">stop("add your rsample object")</span>, grid = gunter_grid) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_tune &lt;- </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   tune_grid(sac_homes_workflow, resamples = <span style="color: #BB0000;">stop("add your rsample object")</span>, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     grid = sac_homes_grid) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
