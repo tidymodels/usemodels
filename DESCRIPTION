@@ -9,7 +9,8 @@ Authors@R: c(
 Description: Code snippets to fit models using the tidymodels framework
     can be easily created for a given data set.
 License: MIT + file LICENSE
-URL: https://usemodels.tidymodels.org/, https://github.com/tidymodels/usemodels
+URL: https://usemodels.tidymodels.org/,
+    https://github.com/tidymodels/usemodels
 BugReports: https://github.com/tidymodels/usemodels/issues
 Imports: 
     cli,
@@ -25,7 +26,8 @@ Suggests:
     modeldata,
     spelling,
     testthat
-Config/Needs/website: tidyverse/tidytemplate
+Config/Needs/website: 
+    tidyverse/tidytemplate
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
