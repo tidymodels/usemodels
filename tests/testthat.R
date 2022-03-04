@@ -7,4 +7,3 @@ if (identical(Sys.getenv("NOT_CRAN"), "true")) { # emulates `testthat:::on_cran(
     test_check("usemodels")
   }
 }
-

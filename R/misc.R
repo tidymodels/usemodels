@@ -20,7 +20,9 @@ y_lvl <- function(rec) {
   }
   var_roles <- summary(rec)
   y_cols <- var_roles$variable[var_roles$role == "outcome"]
-  y_dat <- rec$template %>% dplyr::select(one_of(y_cols)) %>% dplyr::pull(1)
+  y_dat <- rec$template %>%
+    dplyr::select(one_of(y_cols)) %>%
+    dplyr::pull(1)
   length(levels(y_dat))
 }
 
@@ -89,7 +91,7 @@ add_steps_dummy_vars <- function(base, hot = FALSE, add = FALSE, colors = TRUE) 
       add_comment(dummy_hot_msg, add, colors = colors) %>%
       pipe_value(step_dummy(all_nominal_predictors(), one_hot = TRUE))
   } else {
-    base <- base  %>%
+    base <- base %>%
       add_comment(dummy_msg, add, colors = colors) %>%
       pipe_value(step_dummy(all_nominal_predictors()))
   }
@@ -104,8 +106,10 @@ factor_check <- function(base, rec, add, colors = TRUE) {
   var_roles <- summary(rec)
   nominal <- var_roles$variable[var_roles$type == "nominal"]
   is_str <-
-    purrr::map_lgl(rec$template %>% dplyr::select(dplyr::one_of(nominal)),
-                   rlang::is_character)
+    purrr::map_lgl(
+      rec$template %>% dplyr::select(dplyr::one_of(nominal)),
+      rlang::is_character
+    )
   if (any(is_str)) {
     selector <- rlang::expr(one_of(!!!nominal[is_str]))
     step_expr <- rlang::expr(step_string2factor(!!selector))
@@ -139,10 +143,12 @@ template_workflow <- function(prefix) {
 
 template_tune_with_grid <- function(prefix, colors = TRUE) {
   tune_expr <-
-    rlang::call2("tune_grid",
-                 sym(paste0(prefix, "_workflow")),
-                 resamples = expr(stop("add your rsample object")),
-                 grid = sym(paste0(prefix, "_grid")))
+    rlang::call2(
+      "tune_grid",
+      sym(paste0(prefix, "_workflow")),
+      resamples = expr(stop("add your rsample object")),
+      grid = sym(paste0(prefix, "_grid"))
+    )
   res <- assign_value(paste0(prefix, "_tune"), !!tune_expr)
   if (colors) {
     res <- sub(
@@ -163,8 +169,10 @@ template_tune_no_grid <- function(prefix, seed = sample.int(10^5, 1), colors = T
       grid = expr(stop("add number of candidate points"))
     )
 
-  res <- c(paste0("set.seed(", seed,")\n"),
-           assign_value(paste0(prefix, "_tune"), !!tune_expr))
+  res <- c(
+    paste0("set.seed(", seed, ")\n"),
+    assign_value(paste0(prefix, "_tune"), !!tune_expr)
+  )
 
   if (colors) {
     res <- sub(
@@ -186,9 +194,9 @@ template_tune_no_grid <- function(prefix, seed = sample.int(10^5, 1), colors = T
 # Take the call to the template function and turn it into a call to `recipe()`
 initial_recipe_call <- function(cl) {
   cl$tune <- NULL
-  cl$verbose <-  NULL
-  cl$colors <-  NULL
-  cl$prefix <-  NULL
+  cl$verbose <- NULL
+  cl$colors <- NULL
+  cl$prefix <- NULL
   rec_cl <- cl
   rec_cl[[1]] <- rlang::expr(recipe)
   rec_cl

@@ -47,7 +47,7 @@ no_dummy_clip_template <- function(model, prefix, verbose, tune) {
 verify_models <- function(model, prefix, tune, verbose) {
   # These are automatically skipped on CRAN
   if (model != "C5.0") {
-    expect_snapshot(   dummy_clip_template(model, prefix, verbose, tune))
+    expect_snapshot(dummy_clip_template(model, prefix, verbose, tune))
   }
   if (model != "cubist") {
     expect_snapshot(no_dummy_clip_template(model, prefix, verbose, tune))
@@ -55,14 +55,16 @@ verify_models <- function(model, prefix, tune, verbose) {
 }
 
 
-test_that('all model templates with clipboard', {
+test_that("all model templates with clipboard", {
   skip_on_cran()
   skip_on_os("linux")
   skip_on_os("windows")
   local_edition(3)
 
-  models <- c("glmnet", "xgboost", "ranger", "kknn", "earth", "cubist",
-              "kernlab_svm_poly", "kernlab_svm_rbf", "C5.0")
+  models <- c(
+    "glmnet", "xgboost", "ranger", "kknn", "earth", "cubist",
+    "kernlab_svm_poly", "kernlab_svm_rbf", "C5.0"
+  )
 
   test_config <-
     expand.grid(
@@ -73,6 +75,4 @@ test_that('all model templates with clipboard', {
   test_config$pref <- paste0("test_config_", 1:nrow(test_config))
 
   res <- purrr::pmap(test_config, verify_models)
-
 })
-

@@ -3,12 +3,13 @@
 
 # usemodels
 
+<!-- badges: start -->
+
 [![R-CMD-check](https://github.com/tidymodels/usemodels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/usemodels/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 status](https://codecov.io/gh/tidymodels/usemodels/branch/main/graph/badge.svg)](https://codecov.io/github/tidymodels/usemodels?branch=main)
-[![Coverage
-status](https://codecov.io/gh/tidymodels/usemodels/branch/main/graph/badge.svg)](https://codecov.io/github/tidymodels/usemodels?branch=main)
-![](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+<!-- badges: end -->
 
 The usemodels package is a helpful way of quickly creating code snippets
 to fit models using the tidymodels framework.
@@ -77,7 +78,7 @@ devtools::install_github("tidymodels/usemodels")
 ## Contributing
 
 This project is released with a [Contributor Code of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
 -   For questions and discussions about tidymodels packages, modeling,

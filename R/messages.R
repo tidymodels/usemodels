@@ -34,4 +34,3 @@ string_to_factor_msg <-
     "For modeling, it is preferred to encode qualitative data as factors",
     "(instead of character)."
   )
-

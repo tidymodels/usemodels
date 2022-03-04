@@ -39,7 +39,6 @@
 #' @rdname templates
 use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
                        tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -80,13 +79,11 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
         paste0(prefix, "_spec") %>%
         assign_value(!!rlang::call2("logistic_reg", !!!prm)) %>%
         pipe_value(set_mode("classification"))
-
     } else {
       mod_syntax <-
         paste0(prefix, "_spec") %>%
         assign_value(!!rlang::call2("multinom_reg", !!!prm)) %>%
         pipe_value(set_mode("classification"))
-
     }
   } else {
     mod_syntax <-
@@ -107,7 +104,7 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
     glmn_grid <- rlang::expr(
       glmn_grid <-
         tidyr::crossing(
-          penalty = 10 ^ seq(-6, -1, length.out = 20),
+          penalty = 10^seq(-6, -1, length.out = 20),
           mixture = c(0.05, .2, .4, .6, .8, 1)
         )
     )
@@ -123,7 +120,6 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
 #' @rdname templates
 use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
                         tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -142,10 +138,12 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
-      add_steps_dummy_vars(rec_syntax,
-                           hot = TRUE,
-                           add = verbose,
-                           colors = colors)
+      add_steps_dummy_vars(
+        rec_syntax,
+        hot = TRUE,
+        add = verbose,
+        colors = colors
+      )
   }
 
   rec_syntax <- pipe_value(rec_syntax, step_zv(all_predictors()))
@@ -182,7 +180,6 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
 #' @rdname templates
 use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE,
                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -197,7 +194,7 @@ use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE,
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose, colors= colors)
+    factor_check(rec, add = verbose, colors = colors)
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
@@ -236,7 +233,6 @@ use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE,
 #' @rdname templates
 use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE,
                        tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -251,7 +247,7 @@ use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE,
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose, colors= colors)
+    factor_check(rec, add = verbose, colors = colors)
 
   # TODO add a check for the factor levels that are an issue for
 
@@ -283,7 +279,6 @@ use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE,
 #' @rdname templates
 use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -298,7 +293,7 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose, colors= colors)
+    factor_check(rec, add = verbose, colors = colors)
 
   if (has_factor_pred(rec)) {
     rec_syntax <-
@@ -310,7 +305,7 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
   if (tune) {
     prm <-
       rlang::exprs(
-        num_terms = tune(), prod_degree = tune(),  prune_method = "none"
+        num_terms = tune(), prod_degree = tune(), prune_method = "none"
       )
   } else {
     prm <- NULL
@@ -329,7 +324,7 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
     # We can only have as many terms as data points but maybe we should
     # give some wiggle room for resampling. Also, we will have a sequence of odd
     # numbered terms so divide by 2 and keep an integer.
-    term_max <- floor(min(12, floor(floor(nrow(data) * 0.75)))/2)
+    term_max <- floor(min(12, floor(floor(nrow(data) * 0.75))) / 2)
 
     mars_grid <- rlang::expr(
       mars_grid <-
@@ -358,7 +353,6 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
 #' @rdname templates
 use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
                        tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -375,7 +369,7 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
   }
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose, colors= colors)
+    factor_check(rec, add = verbose, colors = colors)
 
   rec_syntax <- pipe_value(rec_syntax, step_zv(all_predictors()))
 
@@ -411,7 +405,6 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
 #' @rdname templates
 use_kernlab_svm_rbf <- function(formula, data, prefix = "kernlab", verbose = FALSE,
                                 tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -457,7 +450,6 @@ use_kernlab_svm_rbf <- function(formula, data, prefix = "kernlab", verbose = FAL
 #' @rdname templates
 use_kernlab_svm_poly <- function(formula, data, prefix = "kernlab", verbose = FALSE,
                                  tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -503,7 +495,6 @@ use_kernlab_svm_poly <- function(formula, data, prefix = "kernlab", verbose = FA
 #' @rdname templates
 use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -520,7 +511,7 @@ use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
   }
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose, colors= colors)
+    factor_check(rec, add = verbose, colors = colors)
 
   if (tune) {
     prm <- rlang::exprs(trees = tune(), min_n = tune())
