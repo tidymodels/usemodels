@@ -17,7 +17,7 @@
     Code
       use_kknn(mpg ~ ., data = mtcars, clipboard = TRUE)
     Message <simpleMessage>
-      To run write_clip() in non-interactive mode, either call write_clip() with allow_non_interactive = TRUE, or set the environment variable CLIPR_ALLOW=TRUE
+      CLIPR_ALLOW has not been set, so clipr will not run interactively
     Error <rlang_error>
       Please use `clipboard = FALSE`
 
