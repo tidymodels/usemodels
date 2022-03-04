@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://usemodels.tidymodels.org/CODE_OF_CONDUCT.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://usemodels.tidymodels.org/LICENSE-text.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://usemodels.tidymodels.org/LICENSE.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://usemodels.tidymodels.org/authors.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/authors.html</loc>
   </url>
   <url>
-    <loc>https://usemodels.tidymodels.org/index.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/index.html</loc>
   </url>
   <url>
-    <loc>https://usemodels.tidymodels.org/news/index.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/news/index.html</loc>
   </url>
   <url>
-    <loc>https://usemodels.tidymodels.org/reference/index.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://usemodels.tidymodels.org/reference/templates.html</loc>
+    <loc>https://usemodels.tidymodels.org/dev/reference/templates.html</loc>
+  </url>
+  <url>
+    <loc>https://usemodels.tidymodels.org/dev/reference/usemodels-package.html</loc>
   </url>
 </urlset>
