@@ -539,7 +539,6 @@ use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
 #' @rdname template
 use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
-
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -654,8 +653,7 @@ use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
       rlang::exprs(
         tree_depth = tune(),
         min_n = tune(),
-        cost_complexity = tune(),
-        class_cost = tune()
+        cost_complexity = tune()
       )
   } else {
     prm <- NULL
@@ -667,6 +665,7 @@ use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("rpart"))
 
+  route("library(baguette)", path = pth, sep = "")
   route(rec_syntax, path = pth)
   route(mod_syntax, path = pth)
   route(template_workflow(prefix), path = pth)
@@ -678,7 +677,7 @@ use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
 }
 
 use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
-                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+                    tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -700,9 +699,14 @@ use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
     factor_check(rec, add = verbose, colors = colors) %>%
     add_steps_normalization()
 
-  prm <- NULL
-
-
+  if (tune) {
+    prm <- rlang::exprs(
+      select_features = tune(),
+      adjust_deg_free = tune()
+    )
+  } else {
+    prm <- NULL
+  }
 
   mod_syntax <-
     paste0(prefix, "_spec") %>%
@@ -710,9 +714,25 @@ use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("mgcv"))
 
+  spec_expr <- rlang::call2(
+    "add_model",
+    sym(paste0(prefix, "_spec")),
+    formula = expr(stop("add your gam formula"))
+  )
+
+  wf_syntax <- paste0(prefix, "_workflow") %>%
+    assign_value(workflow()) %>%
+    pipe_value(add_recipe(!!rlang::sym(paste0(prefix, "_recipe")))) %>%
+    pipe_value(!!spec_expr)
+
   route(rec_syntax, path = pth)
   route(mod_syntax, path = pth)
-  route(template_workflow(prefix), path = pth)
+  route(wf_syntax, path = pth)
+
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+
   clipboard_output(pth)
   invisible(NULL)
 }
@@ -720,7 +740,7 @@ use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
 #' @export
 #' @rdname templates
 use_bart <- function(formula, data, prefix = "bart", verbose = FALSE,
-                        tune = TRUE, colors = TRUE, clipboard = FALSE) {
+                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -742,8 +762,7 @@ use_bart <- function(formula, data, prefix = "bart", verbose = FALSE,
       rlang::exprs(
         trees = tune(),
         prior_terminal_node_coef = tune(),
-        prior_terminal_node_expo = tune(),
-        prior_outcome_range = tune()
+        prior_terminal_node_expo = tune()
       )
   } else {
     prm <- NULL
@@ -768,7 +787,7 @@ use_bart <- function(formula, data, prefix = "bart", verbose = FALSE,
 #' @export
 #' @rdname templates
 use_pls <- function(formula, data, prefix = "pls", verbose = FALSE,
-                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+                    tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -812,6 +831,7 @@ use_pls <- function(formula, data, prefix = "pls", verbose = FALSE,
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("mixOmics"))
 
+  route("library(plsmod)", path = pth, sep = "")
   route(rec_syntax, path = pth)
   route(mod_syntax, path = pth)
   route(template_workflow(prefix), path = pth)
@@ -873,6 +893,7 @@ use_rule_fit <- function(formula, data, prefix = "rule", verbose = FALSE,
     pipe_value(set_mode(!!model_mode(rec))) %>%
     pipe_value(set_engine("xrf"))
 
+  route("library(rules)", path = pth, sep = "")
   route(rec_syntax, path = pth)
   route(mod_syntax, path = pth)
   route(template_workflow(prefix), path = pth)
