@@ -534,3 +534,54 @@ use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
   clipboard_output(pth)
   invisible(NULL)
 }
+
+#' @export
+#' @rdname template
+use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
+                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipes::recipe(formula, data)
+
+  if (has_factor_pred(rec)) {
+    rec_syntax <-
+      add_steps_dummy_vars(rec_syntax, add = verbose, colors = colors)
+  }
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors = colors) %>%
+    add_steps_normalization()
+
+  if (tune) {
+    prm <- rlang::exprs(hidden_units = tune(), penalty = tune(), epochs = tune())
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("mlp", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec)))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+
