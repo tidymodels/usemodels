@@ -690,10 +690,6 @@ use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
 
   rec <- recipe(formula, data)
 
-  if (model_mode(rec) != "regression") {
-    rlang::abort("GAM models are only for regression")
-  }
-
   rec_syntax <-
     rec_syntax %>%
     factor_check(rec, add = verbose, colors = colors) %>%
