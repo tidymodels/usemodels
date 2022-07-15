@@ -584,4 +584,301 @@ use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
   invisible(NULL)
 }
 
+#' @export
+#' @rdname template
+use_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
+                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
 
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipe(formula, data)
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors = colors)
+
+  if (tune) {
+    prm <-
+      rlang::exprs(
+        tree_depth = tune(), min_n = tune(), cost_complexity = tune()
+      )
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("decision_tree", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec))) %>%
+    pipe_value(set_engine("rpart"))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+#' @export
+#' @rdname template
+use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
+                               tune = TRUE, colors = TRUE, clipboard = FALSE) {
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipe(formula, data)
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors = colors)
+
+  if (tune) {
+    prm <-
+      rlang::exprs(
+        tree_depth = tune(),
+        min_n = tune(),
+        cost_complexity = tune(),
+        class_cost = tune()
+      )
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("bag_tree", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec))) %>%
+    pipe_value(set_engine("rpart"))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
+                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipe(formula, data)
+
+  if (model_mode(rec) != "regression") {
+    rlang::abort("GAM models are only for regression")
+  }
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors = colors) %>%
+    add_steps_normalization()
+
+  prm <- NULL
+
+
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("gen_additive_mod", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec))) %>%
+    pipe_value(set_engine("mgcv"))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+#' @export
+#' @rdname templates
+use_bart <- function(formula, data, prefix = "bart", verbose = FALSE,
+                        tune = TRUE, colors = TRUE, clipboard = FALSE) {
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipe(formula, data)
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors = colors)
+
+  if (tune) {
+    prm <-
+      rlang::exprs(
+        trees = tune(),
+        prior_terminal_node_coef = tune(),
+        prior_terminal_node_expo = tune(),
+        prior_outcome_range = tune()
+      )
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("bart", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec))) %>%
+    pipe_value(set_engine("dbarts"))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+#' @export
+#' @rdname templates
+use_pls <- function(formula, data, prefix = "pls", verbose = FALSE,
+                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipe(formula, data)
+
+  if (model_mode(rec) != "regression") {
+    rlang::abort("PLS models are only for regression")
+  }
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors = colors)
+
+  if (has_factor_pred(rec)) {
+    rec_syntax <-
+      add_steps_dummy_vars(rec_syntax, add = verbose, colors = colors)
+  }
+
+  rec_syntax <-
+    rec_syntax %>%
+    add_steps_normalization()
+
+  if (tune) {
+    prm <-
+      rlang::exprs(
+        predictor_prop = tune(), num_comp = tune()
+      )
+  } else {
+    prm <- NULL
+  }
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("pls", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec))) %>%
+    pipe_value(set_engine("mixOmics"))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
+
+#' @export
+#' @rdname template
+use_rule_fit <- function(formula, data, prefix = "rule", verbose = FALSE,
+                         tune = TRUE, colors = TRUE, clipboard = FALSE) {
+  check_clipboard(clipboard)
+  colors <- check_color(colors, clipboard)
+  pth <- output_loc(clipboard)
+  on.exit(unlink(pth))
+
+  rec_cl <- initial_recipe_call(match.call())
+  rec_syntax <-
+    paste0(prefix, "_recipe") %>%
+    assign_value(!!rec_cl)
+
+  rec <- recipe(formula, data)
+
+  rec_syntax <-
+    rec_syntax %>%
+    factor_check(rec, add = verbose, colors = colors)
+
+  if (has_factor_pred(rec)) {
+    rec_syntax <-
+      add_steps_dummy_vars(rec_syntax, add = verbose, colors = colors)
+  }
+
+  rec_syntax <-
+    rec_syntax %>%
+    add_steps_normalization()
+
+  if (tune) {
+    prm <-
+      rlang::exprs(
+        mtry = tune(),
+        trees = tune(),
+        min_n = tune(),
+        tree_depth = tune(),
+        learn_rate = tune(),
+        loss_reduction = tune(),
+        sample_size = tune(),
+        penalty = tune()
+      )
+  } else {
+    prm <- NULL
+  }
+
+  mod_syntax <-
+    paste0(prefix, "_spec") %>%
+    assign_value(!!rlang::call2("rule_fit", !!!prm)) %>%
+    pipe_value(set_mode(!!model_mode(rec))) %>%
+    pipe_value(set_engine("xrf"))
+
+  route(rec_syntax, path = pth)
+  route(mod_syntax, path = pth)
+  route(template_workflow(prefix), path = pth)
+  if (tune) {
+    route(template_tune_no_grid(prefix, colors = colors), path = pth, sep = "")
+  }
+  clipboard_output(pth)
+  invisible(NULL)
+}
