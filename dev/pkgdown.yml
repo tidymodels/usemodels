@@ -1,8 +1,8 @@
 pandoc: 2.14.2
-pkgdown: 2.0.3
+pkgdown: 2.0.5
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-04-28T17:07Z
+last_built: 2022-07-16T20:21Z
 urls:
   reference: https://usemodels.tidymodels.org/reference
   article: https://usemodels.tidymodels.org/articles
