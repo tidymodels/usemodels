@@ -678,7 +678,7 @@ use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_mgcv <- function(formula, data, prefix = "gam", verbose = FALSE,
+use_mgcv <- function(formula, data, prefix = "mgcv", verbose = FALSE,
                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
@@ -736,7 +736,7 @@ use_mgcv <- function(formula, data, prefix = "gam", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_dbarts <- function(formula, data, prefix = "bart", verbose = FALSE,
+use_dbarts <- function(formula, data, prefix = "dbarts", verbose = FALSE,
                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
@@ -783,7 +783,7 @@ use_dbarts <- function(formula, data, prefix = "bart", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_mixOmics <- function(formula, data, prefix = "pls", verbose = FALSE,
+use_mixOmics <- function(formula, data, prefix = "mixOmics", verbose = FALSE,
                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
@@ -841,7 +841,7 @@ use_mixOmics <- function(formula, data, prefix = "pls", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_xrf <- function(formula, data, prefix = "rule", verbose = FALSE,
+use_xrf <- function(formula, data, prefix = "xrf", verbose = FALSE,
                          tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
