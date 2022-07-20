@@ -142,7 +142,7 @@ use_bag_tree_rpart(
 use_mgcv(
   formula,
   data,
-  prefix = "gam",
+  prefix = "mgcv",
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE,
@@ -152,7 +152,7 @@ use_mgcv(
 use_dbarts(
   formula,
   data,
-  prefix = "bart",
+  prefix = "dbarts",
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE,
@@ -162,7 +162,7 @@ use_dbarts(
 use_mixOmics(
   formula,
   data,
-  prefix = "pls",
+  prefix = "mixOmics",
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE,
@@ -172,7 +172,7 @@ use_mixOmics(
 use_xrf(
   formula,
   data,
-  prefix = "rule",
+  prefix = "xrf",
   verbose = FALSE,
   tune = TRUE,
   colors = TRUE,

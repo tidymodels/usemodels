@@ -18,12 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Julia Silge \email{julia.silge@rstudio.com} (\href{https://orcid.org/0000-0002-3671-836X}{ORCID})
-
-Authors:
-\itemize{
-  \item Max Kuhn \email{max@rstudio.com} (\href{https://orcid.org/0000-0003-2402-136X}{ORCID})
-}
+\strong{Maintainer}: Max Kuhn \email{max@rstudio.com} (\href{https://orcid.org/0000-0003-2402-136X}{ORCID})
 
 Other contributors:
 \itemize{
