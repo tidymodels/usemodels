@@ -536,7 +536,7 @@ use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
 }
 
 #' @export
-#' @rdname template
+#' @rdname templates
 use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
@@ -584,7 +584,7 @@ use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
 }
 
 #' @export
-#' @rdname template
+#' @rdname templates
 use_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
@@ -629,7 +629,7 @@ use_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
 }
 
 #' @export
-#' @rdname template
+#' @rdname templates
 use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
                                tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
@@ -676,7 +676,9 @@ use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
   invisible(NULL)
 }
 
-use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
+#' @export
+#' @rdname templates
+use_mgcv <- function(formula, data, prefix = "gam", verbose = FALSE,
                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
@@ -735,7 +737,7 @@ use_gam <- function(formula, data, prefix = "gam", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_bart <- function(formula, data, prefix = "bart", verbose = FALSE,
+use_dbarts <- function(formula, data, prefix = "bart", verbose = FALSE,
                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
@@ -782,7 +784,7 @@ use_bart <- function(formula, data, prefix = "bart", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_pls <- function(formula, data, prefix = "pls", verbose = FALSE,
+use_mixOmics <- function(formula, data, prefix = "pls", verbose = FALSE,
                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
@@ -839,8 +841,8 @@ use_pls <- function(formula, data, prefix = "pls", verbose = FALSE,
 }
 
 #' @export
-#' @rdname template
-use_rule_fit <- function(formula, data, prefix = "rule", verbose = FALSE,
+#' @rdname templates
+use_xrf <- function(formula, data, prefix = "rule", verbose = FALSE,
                          tune = TRUE, colors = TRUE, clipboard = FALSE) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
