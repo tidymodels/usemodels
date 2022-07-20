@@ -694,8 +694,7 @@ use_mgcv <- function(formula, data, prefix = "gam", verbose = FALSE,
 
   rec_syntax <-
     rec_syntax %>%
-    factor_check(rec, add = verbose, colors = colors) %>%
-    add_steps_normalization()
+    factor_check(rec, add = verbose, colors = colors)
 
   if (tune) {
     prm <- rlang::exprs(
