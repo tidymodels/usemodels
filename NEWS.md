@@ -1,5 +1,7 @@
 # usemodels (development version)
 
+* Fix `recipe()` call when `clipboard = TRUE`
+
 # usemodels 0.2.0
 
 * SVM (#14) and C5.0 (#9) models were added. 

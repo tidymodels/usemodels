@@ -197,6 +197,7 @@ initial_recipe_call <- function(cl) {
   cl$verbose <- NULL
   cl$colors <- NULL
   cl$prefix <- NULL
+  cl$clipboard <- NULL
   rec_cl <- cl
   rec_cl[[1]] <- rlang::expr(recipe)
   rec_cl
