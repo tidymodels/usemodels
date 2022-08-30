@@ -2,6 +2,9 @@
 
 * Added `use_nnet()`, `use_rpart()`, `use_bag_tree_rpart()`, `use_mgcv()`, `use_dbarts()`, `use_mixOmics()`, `use_xrf()`. 
 
+* Fix `recipe()` call when `clipboard = TRUE`
+
+
 # usemodels 0.2.0
 
 * SVM (#14) and C5.0 (#9) models were added. 
