@@ -61,10 +61,9 @@ test_that("all model templates with clipboard", {
   skip_on_os("windows")
   local_edition(3)
 
-  models <- c(
-    "glmnet", "xgboost", "ranger", "kknn", "earth", "cubist",
-    "kernlab_svm_poly", "kernlab_svm_rbf", "C5.0"
-  )
+  models <- c("bag_tree_rpart", "C5.0", "cubist", "dbarts", "earth", "glmnet",
+              "kernlab_svm_poly", "kernlab_svm_rbf", "kknn", "mgcv", "mixOmics",
+              "nnet", "ranger", "rpart", "xgboost", "xrf")
 
   test_config <-
     expand.grid(

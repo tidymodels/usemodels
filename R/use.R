@@ -797,10 +797,6 @@ use_mixOmics <- function(formula, data, prefix = "mixOmics", verbose = FALSE,
 
   rec <- recipe(formula, data)
 
-  if (model_mode(rec) != "regression") {
-    rlang::abort("PLS models are only for regression")
-  }
-
   rec_syntax <-
     rec_syntax %>%
     factor_check(rec, add = verbose, colors = colors)
