@@ -5,7 +5,7 @@ model_mode <- function(rec) {
   if (length(y_types) > 1) {
     rlang::abort("outcomes are of different types.")
   }
-  if (all(y_types == "numeric")) {
+  if (all(purrr::map_lgl(y_types, ~"numeric" %in% .x))) {
     mod_mode <- "regression"
   } else {
     mod_mode <- "classification"
