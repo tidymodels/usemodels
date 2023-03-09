@@ -49,8 +49,6 @@ verify_models <- function(model, prefix, tune, verbose) {
 
 
 test_that("all model templates", {
-  local_edition(3)
-
   models <- c("bag_tree_rpart", "C5.0", "cubist", "dbarts", "earth", "glmnet",
               "kernlab_svm_poly", "kernlab_svm_rbf", "kknn", "mgcv", "mixOmics",
               "nnet", "ranger", "rpart", "xgboost", "xrf")
