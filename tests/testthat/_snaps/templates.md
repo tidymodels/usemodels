@@ -125,6 +125,12 @@
     Output
       test_config_5_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_5_dummies_spec <- 
@@ -145,6 +151,12 @@
     Output
       test_config_5_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_5_no_dummies_spec <- 
@@ -165,6 +177,12 @@
     Output
       test_config_6_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Regularization methods sum up functions of the model slope 
         ## coefficients. Because of this, the predictor variables should be on 
         ## the same scale. Before centering and scaling the numeric predictors, 
@@ -190,6 +208,12 @@
     Output
       test_config_6_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Regularization methods sum up functions of the model slope 
         ## coefficients. Because of this, the predictor variables should be on 
         ## the same scale. Before centering and scaling the numeric predictors, 
@@ -311,6 +335,12 @@
     Output
       test_config_9_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Since distance calculations are used, the predictor variables should 
         ## be on the same scale. Before centering and scaling the numeric 
         ## predictors, any predictors with a single unique value are filtered 
@@ -336,6 +366,12 @@
     Output
       test_config_9_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Since distance calculations are used, the predictor variables should 
         ## be on the same scale. Before centering and scaling the numeric 
         ## predictors, any predictors with a single unique value are filtered 
@@ -401,6 +437,12 @@
       
       test_config_11_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -424,6 +466,12 @@
       
       test_config_11_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -445,6 +493,12 @@
     Output
       test_config_12_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -465,6 +519,12 @@
     Output
       test_config_12_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -561,6 +621,14 @@
     Output
       test_config_15_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. However, for this model, binary indicator variables can be 
+        ## made for each of the levels of the factors (known as 'one-hot 
+        ## encoding'). 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_15_dummies_spec <- 
@@ -581,6 +649,14 @@
     Output
       test_config_15_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. However, for this model, binary indicator variables can be 
+        ## made for each of the levels of the factors (known as 'one-hot 
+        ## encoding'). 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_15_no_dummies_spec <- 
@@ -603,6 +679,12 @@
       
       test_config_16_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -626,6 +708,12 @@
       
       test_config_16_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -799,6 +887,12 @@
     Output
       test_config_21_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_21_dummies_spec <- 
@@ -830,6 +924,12 @@
     Output
       test_config_21_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_21_no_dummies_spec <- 
@@ -861,6 +961,12 @@
     Output
       test_config_22_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Regularization methods sum up functions of the model slope 
         ## coefficients. Because of this, the predictor variables should be on 
         ## the same scale. Before centering and scaling the numeric predictors, 
@@ -893,6 +999,12 @@
     Output
       test_config_22_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Regularization methods sum up functions of the model slope 
         ## coefficients. Because of this, the predictor variables should be on 
         ## the same scale. Before centering and scaling the numeric predictors, 
@@ -1041,6 +1153,12 @@
     Output
       test_config_25_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Since distance calculations are used, the predictor variables should 
         ## be on the same scale. Before centering and scaling the numeric 
         ## predictors, any predictors with a single unique value are filtered 
@@ -1071,6 +1189,12 @@
     Output
       test_config_25_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         ## Since distance calculations are used, the predictor variables should 
         ## be on the same scale. Before centering and scaling the numeric 
         ## predictors, any predictors with a single unique value are filtered 
@@ -1151,6 +1275,12 @@
       
       test_config_27_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1179,6 +1309,12 @@
       
       test_config_27_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1205,6 +1341,12 @@
     Output
       test_config_28_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1230,6 +1372,12 @@
     Output
       test_config_28_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1351,6 +1499,14 @@
     Output
       test_config_31_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. However, for this model, binary indicator variables can be 
+        ## made for each of the levels of the factors (known as 'one-hot 
+        ## encoding'). 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_31_dummies_spec <- 
@@ -1377,6 +1533,14 @@
     Output
       test_config_31_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. However, for this model, binary indicator variables can be 
+        ## made for each of the levels of the factors (known as 'one-hot 
+        ## encoding'). 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_31_no_dummies_spec <- 
@@ -1405,6 +1569,12 @@
       
       test_config_32_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1434,6 +1604,12 @@
       
       test_config_32_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        ## This model requires the predictors to be numeric. The most common 
+        ## method to convert qualitative predictors to numeric is to create 
+        ## binary indicator variables (aka dummy variables) from these 
+        ## predictors. 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1581,6 +1757,8 @@
     Output
       test_config_37_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_37_dummies_spec <- 
@@ -1601,6 +1779,8 @@
     Output
       test_config_37_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_37_no_dummies_spec <- 
@@ -1621,6 +1801,8 @@
     Output
       test_config_38_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1642,6 +1824,8 @@
     Output
       test_config_38_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1743,6 +1927,8 @@
     Output
       test_config_41_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1764,6 +1950,8 @@
     Output
       test_config_41_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1825,6 +2013,8 @@
       
       test_config_43_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1848,6 +2038,8 @@
       
       test_config_43_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1869,6 +2061,8 @@
     Output
       test_config_44_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1889,6 +2083,8 @@
     Output
       test_config_44_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -1985,6 +2181,8 @@
     Output
       test_config_47_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_47_dummies_spec <- 
@@ -2005,6 +2203,8 @@
     Output
       test_config_47_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_47_no_dummies_spec <- 
@@ -2027,6 +2227,8 @@
       
       test_config_48_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2050,6 +2252,8 @@
       
       test_config_48_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2223,6 +2427,8 @@
     Output
       test_config_53_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_53_dummies_spec <- 
@@ -2249,6 +2455,8 @@
     Output
       test_config_53_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) 
       
       test_config_53_no_dummies_spec <- 
@@ -2275,6 +2483,8 @@
     Output
       test_config_54_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2303,6 +2513,8 @@
     Output
       test_config_54_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2431,6 +2643,8 @@
     Output
       test_config_57_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2457,6 +2671,8 @@
     Output
       test_config_57_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2533,6 +2749,8 @@
       
       test_config_59_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2561,6 +2779,8 @@
       
       test_config_59_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2587,6 +2807,8 @@
     Output
       test_config_60_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2612,6 +2834,8 @@
     Output
       test_config_60_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2733,6 +2957,8 @@
     Output
       test_config_63_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_63_dummies_spec <- 
@@ -2759,6 +2985,8 @@
     Output
       test_config_63_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors(), one_hot = TRUE) %>% 
         step_zv(all_predictors()) 
       
       test_config_63_no_dummies_spec <- 
@@ -2787,6 +3015,8 @@
       
       test_config_64_dummies_recipe <- 
         recipe(formula = body_mass_g ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
@@ -2816,6 +3046,8 @@
       
       test_config_64_no_dummies_recipe <- 
         recipe(formula = species ~ ., data = penguins) %>% 
+        step_novel(all_nominal_predictors()) %>% 
+        step_dummy(all_nominal_predictors()) %>% 
         step_zv(all_predictors()) %>% 
         step_normalize(all_numeric_predictors()) 
       
