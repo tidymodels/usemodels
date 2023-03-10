@@ -59,9 +59,12 @@ The package includes these templates:
 
 ``` r
 > ls("package:usemodels", pattern = "use_")
-[1] "use_C5.0"             "use_cubist"           "use_earth"           
-[4] "use_glmnet"           "use_kernlab_svm_poly" "use_kernlab_svm_rbf" 
-[7] "use_kknn"             "use_ranger"           "use_xgboost"         
+ [1] "use_bag_tree_rpart"   "use_C5.0"             "use_cubist"          
+ [4] "use_dbarts"           "use_earth"            "use_glmnet"          
+ [7] "use_kernlab_svm_poly" "use_kernlab_svm_rbf"  "use_kknn"            
+[10] "use_mgcv"             "use_mixOmics"         "use_nnet"            
+[13] "use_ranger"           "use_rpart"            "use_xgboost"         
+[16] "use_xrf"             
 ```
 
 You can also copy code to the clipboard using the option
@@ -81,18 +84,18 @@ This project is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
--   For questions and discussions about tidymodels packages, modeling,
-    and machine learning, please [post on RStudio
-    Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
+- For questions and discussions about tidymodels packages, modeling, and
+  machine learning, please [post on RStudio
+  Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
 
--   If you think you have encountered a bug, please [submit an
-    issue](https://github.com/tidymodels/usemodels/issues).
+- If you think you have encountered a bug, please [submit an
+  issue](https://github.com/tidymodels/usemodels/issues).
 
--   Either way, learn how to create and share a
-    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
-    (a minimal, reproducible example), to clearly communicate about your
-    code.
+- Either way, learn how to create and share a
+  [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+  (a minimal, reproducible example), to clearly communicate about your
+  code.
 
--   Check out further details on [contributing guidelines for tidymodels
-    packages](https://www.tidymodels.org/contribute/) and [how to get
-    help](https://www.tidymodels.org/help/).
+- Check out further details on [contributing guidelines for tidymodels
+  packages](https://www.tidymodels.org/contribute/) and [how to get
+  help](https://www.tidymodels.org/help/).
