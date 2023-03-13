@@ -281,6 +281,8 @@ every data analysis. It has reasonable defaults.</p>
 <span class="r-in"><span><span class="fu">use_glmnet</span><span class="op">(</span><span class="va">Class</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">ad_data</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> glmnet_recipe &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = Class ~ ., data = ad_data) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step_novel(all_nominal_predictors()) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step_dummy(all_nominal_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_zv(all_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_normalize(all_numeric_predictors()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -305,6 +307,12 @@ every data analysis. It has reasonable defaults.</p>
 <span class="r-in"><span><span class="fu">use_glmnet</span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Sacramento</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, prefix <span class="op">=</span> <span class="st">"sac_homes"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_recipe &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = price ~ ., data = Sacramento) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step_novel(all_nominal_predictors()) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## This model requires the predictors to be numeric. The most common</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## method to convert qualitative predictors to numeric is to create</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## binary indicator variables (aka dummy variables) from these</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## predictors.</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step_dummy(all_nominal_predictors()) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## Regularization methods sum up functions of the model slope</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## coefficients. Because of this, the predictor variables should be on</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #BBBB00;">## the same scale. Before centering and scaling the numeric predictors,</span> </span>
@@ -313,8 +321,8 @@ every data analysis. It has reasonable defaults.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_normalize(all_numeric_predictors()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_spec &lt;- </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   multinom_reg(penalty = tune(), mixture = tune()) %&gt;% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   set_mode("classification") %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   linear_reg(penalty = tune(), mixture = tune()) %&gt;% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   set_mode("regression") %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   set_engine("glmnet") </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_workflow &lt;- </span>
@@ -338,7 +346,7 @@ every data analysis. It has reasonable defaults.</p>
    </div>
   <footer><div class="container">
   <div class="pkgdown-footer-left">
-  <p></p><p>Developed by <a href="https://github.com/topepo" class="external-link">Max Kuhn</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
+  <p></p><p>Developed by <a href="https://github.com/topepo" class="external-link">Max Kuhn</a>, <a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -102,9 +102,12 @@
 <p>The recipe steps that are used (if any) depend on the type of data as well as the model. In this case, the first two steps handle the fact that <code>Species</code> is a factor-encoded predictor (and <code>glmnet</code> requires all numeric predictors). The last two steps are added because, for this model, the predictors should be on the same scale to be properly regularized.</p>
 <p>The package includes these templates:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ls</span>(<span class="st">"package:usemodels"</span>, <span class="at">pattern =</span> <span class="st">"use_"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"use_C5.0"</span>             <span class="st">"use_cubist"</span>           <span class="st">"use_earth"</span>           </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>] <span class="st">"use_glmnet"</span>           <span class="st">"use_kernlab_svm_poly"</span> <span class="st">"use_kernlab_svm_rbf"</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">7</span>] <span class="st">"use_kknn"</span>             <span class="st">"use_ranger"</span>           <span class="st">"use_xgboost"</span>         </span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">"use_bag_tree_rpart"</span>   <span class="st">"use_C5.0"</span>             <span class="st">"use_cubist"</span>          </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">4</span>] <span class="st">"use_dbarts"</span>           <span class="st">"use_earth"</span>            <span class="st">"use_glmnet"</span>          </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">"use_kernlab_svm_poly"</span> <span class="st">"use_kernlab_svm_rbf"</span>  <span class="st">"use_kknn"</span>            </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span>] <span class="st">"use_mgcv"</span>             <span class="st">"use_mixOmics"</span>         <span class="st">"use_nnet"</span>            </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">"use_ranger"</span>           <span class="st">"use_rpart"</span>            <span class="st">"use_xgboost"</span>         </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">16</span>] <span class="st">"use_xrf"</span>             </span></code></pre></div>
 <p>You can also copy code to the clipboard using the option <code>clipboard = TRUE</code>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -162,7 +165,7 @@
 <li>
 <a href="https://github.com/topepo" class="external-link">Max Kuhn</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2402-136X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
-<a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a> <br><small class="roles"> Copyright holder, funder </small>  </li>
+<a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a> <br><small class="roles"> Copyright holder, funder </small>  </li>
 </ul>
 </div>
 
@@ -183,7 +186,7 @@
   <footer><div class="container">
   <div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by <a href="https://github.com/topepo" class="external-link">Max Kuhn</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>.</p>
+<p>Developed by <a href="https://github.com/topepo" class="external-link">Max Kuhn</a>, <a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
