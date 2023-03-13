@@ -59,7 +59,6 @@ test_that("all model templates with clipboard", {
   skip_on_cran()
   skip_on_os("linux")
   skip_on_os("windows")
-  local_edition(3)
 
   models <- c("bag_tree_rpart", "C5.0", "cubist", "dbarts", "earth", "glmnet",
               "kernlab_svm_poly", "kernlab_svm_rbf", "kknn", "mgcv", "mixOmics",
