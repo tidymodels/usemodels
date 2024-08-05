@@ -2,7 +2,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                    
@@ -24,7 +24,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                 
@@ -46,7 +46,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_2_no_dummies_recipe <- "               
@@ -66,7 +66,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                           
@@ -88,7 +88,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_4_dummies_recipe <- "                     
@@ -108,7 +108,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_4_no_dummies_recipe <- "               
@@ -128,7 +128,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_5_dummies_recipe <- "                                       
@@ -155,7 +155,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_5_no_dummies_recipe <- "                                    
@@ -182,7 +182,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_6_dummies_recipe <- "                                          
@@ -214,7 +214,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_6_no_dummies_recipe <- "                                       
@@ -246,7 +246,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_7_dummies_recipe <- "                                           
@@ -271,7 +271,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_7_no_dummies_recipe <- "                                        
@@ -296,7 +296,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_8_dummies_recipe <- "                                           
@@ -321,7 +321,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_8_no_dummies_recipe <- "                                        
@@ -346,7 +346,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_9_dummies_recipe <- "                                          
@@ -378,7 +378,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_9_no_dummies_recipe <- "                                       
@@ -410,7 +410,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_10_dummies_recipe <- "                                                  
@@ -430,7 +430,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_10_no_dummies_recipe <- "                                                  
@@ -450,7 +450,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                                        
@@ -480,7 +480,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                                        
@@ -510,7 +510,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_12_dummies_recipe <- "                                      
@@ -537,7 +537,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_12_no_dummies_recipe <- "                                   
@@ -564,7 +564,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_13_dummies_recipe <- "                    
@@ -584,7 +584,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_13_no_dummies_recipe <- "               
@@ -604,7 +604,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_14_dummies_recipe <- "                    
@@ -624,7 +624,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_14_no_dummies_recipe <- "               
@@ -644,7 +644,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_15_dummies_recipe <- "                                           
@@ -673,7 +673,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_15_no_dummies_recipe <- "                                        
@@ -702,7 +702,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                         
@@ -732,7 +732,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                         
@@ -762,7 +762,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                                                           
@@ -789,7 +789,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                                                              
@@ -816,7 +816,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_18_no_dummies_recipe <- "                                                           
@@ -841,7 +841,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                                              
@@ -870,7 +870,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_20_dummies_recipe <- "                                                                
@@ -895,7 +895,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_20_no_dummies_recipe <- "                                                             
@@ -926,7 +926,7 @@
       ## cost. A regular grid is used to exploit this property. The first term
       ## is only the intercept, so the grid is a sequence of even numbered
       ## values.
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_21_dummies_recipe <- "                                                           
@@ -965,7 +965,7 @@
       ## cost. A regular grid is used to exploit this property. The first term
       ## is only the intercept, so the grid is a sequence of even numbered
       ## values.
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_21_no_dummies_recipe <- "                                                           
@@ -998,7 +998,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_22_dummies_recipe <- "                                                           
@@ -1037,7 +1037,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_22_no_dummies_recipe <- "                                                           
@@ -1076,7 +1076,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_23_dummies_recipe <- "                                                           
@@ -1106,7 +1106,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_23_no_dummies_recipe <- "                                                           
@@ -1136,7 +1136,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_24_dummies_recipe <- "                                                           
@@ -1166,7 +1166,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_24_no_dummies_recipe <- "                                                           
@@ -1196,7 +1196,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_25_dummies_recipe <- "                                                           
@@ -1233,7 +1233,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_25_no_dummies_recipe <- "                                                           
@@ -1270,7 +1270,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_26_dummies_recipe <- "                                                           
@@ -1295,7 +1295,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_26_no_dummies_recipe <- "                                                           
@@ -1320,7 +1320,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                                                             
@@ -1355,7 +1355,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                                                                
@@ -1390,7 +1390,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_28_dummies_recipe <- "                                                           
@@ -1422,7 +1422,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_28_no_dummies_recipe <- "                                                           
@@ -1454,7 +1454,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_29_dummies_recipe <- "                                                           
@@ -1479,7 +1479,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_29_no_dummies_recipe <- "                                                           
@@ -1504,7 +1504,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_30_dummies_recipe <- "                                                           
@@ -1529,7 +1529,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_30_no_dummies_recipe <- "                                                           
@@ -1554,7 +1554,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_31_dummies_recipe <- "                                                           
@@ -1589,7 +1589,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_31_no_dummies_recipe <- "                                                           
@@ -1624,7 +1624,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                                                
@@ -1660,7 +1660,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                                                 
@@ -1696,7 +1696,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                    
@@ -1718,7 +1718,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                  
@@ -1740,7 +1740,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_34_no_dummies_recipe <- "               
@@ -1760,7 +1760,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                           
@@ -1782,7 +1782,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_36_dummies_recipe <- "                    
@@ -1802,7 +1802,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_36_no_dummies_recipe <- "               
@@ -1822,7 +1822,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_37_dummies_recipe <- "                        
@@ -1845,7 +1845,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_37_no_dummies_recipe <- "                 
@@ -1868,7 +1868,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_38_dummies_recipe <- "                        
@@ -1892,7 +1892,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_38_no_dummies_recipe <- "                 
@@ -1916,7 +1916,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_39_dummies_recipe <- "                        
@@ -1937,7 +1937,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_39_no_dummies_recipe <- "                 
@@ -1958,7 +1958,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_40_dummies_recipe <- "                        
@@ -1979,7 +1979,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_40_no_dummies_recipe <- "                 
@@ -2000,7 +2000,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_41_dummies_recipe <- "                        
@@ -2024,7 +2024,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_41_no_dummies_recipe <- "                 
@@ -2048,7 +2048,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_42_dummies_recipe <- "                                                  
@@ -2068,7 +2068,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_42_no_dummies_recipe <- "                                                  
@@ -2088,7 +2088,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                          
@@ -2114,7 +2114,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                      
@@ -2140,7 +2140,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_44_dummies_recipe <- "                        
@@ -2163,7 +2163,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_44_no_dummies_recipe <- "                 
@@ -2186,7 +2186,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_45_dummies_recipe <- "                    
@@ -2206,7 +2206,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_45_no_dummies_recipe <- "               
@@ -2226,7 +2226,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_46_dummies_recipe <- "                    
@@ -2246,7 +2246,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_46_no_dummies_recipe <- "               
@@ -2266,7 +2266,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_47_dummies_recipe <- "                          
@@ -2289,7 +2289,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_47_no_dummies_recipe <- "                       
@@ -2312,7 +2312,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                           
@@ -2338,7 +2338,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                       
@@ -2364,7 +2364,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                                                           
@@ -2391,7 +2391,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(baguette)"                                                                              
@@ -2418,7 +2418,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_50_no_dummies_recipe <- "                                                           
@@ -2443,7 +2443,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                                              
@@ -2472,7 +2472,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_52_dummies_recipe <- "                                                                
@@ -2497,7 +2497,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_52_no_dummies_recipe <- "                                                             
@@ -2522,7 +2522,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_53_dummies_recipe <- "                                                           
@@ -2551,7 +2551,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_53_no_dummies_recipe <- "                                                           
@@ -2580,7 +2580,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_54_dummies_recipe <- "                                                           
@@ -2611,7 +2611,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_54_no_dummies_recipe <- "                                                           
@@ -2642,7 +2642,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_55_dummies_recipe <- "                                                           
@@ -2668,7 +2668,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_55_no_dummies_recipe <- "                                                           
@@ -2694,7 +2694,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_56_dummies_recipe <- "                                                           
@@ -2720,7 +2720,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_56_no_dummies_recipe <- "                                                           
@@ -2746,7 +2746,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_57_dummies_recipe <- "                                                           
@@ -2775,7 +2775,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_57_no_dummies_recipe <- "                                                           
@@ -2804,7 +2804,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_58_dummies_recipe <- "                                                           
@@ -2829,7 +2829,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_58_no_dummies_recipe <- "                                                           
@@ -2854,7 +2854,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                                                             
@@ -2885,7 +2885,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(plsmod)"                                                                                
@@ -2916,7 +2916,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_60_dummies_recipe <- "                                                           
@@ -2944,7 +2944,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_60_no_dummies_recipe <- "                                                           
@@ -2972,7 +2972,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_61_dummies_recipe <- "                                                           
@@ -2997,7 +2997,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_61_no_dummies_recipe <- "                                                           
@@ -3022,7 +3022,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_62_dummies_recipe <- "                                                           
@@ -3047,7 +3047,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_62_no_dummies_recipe <- "                                                           
@@ -3072,7 +3072,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_63_dummies_recipe <- "                                                           
@@ -3101,7 +3101,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "test_config_63_no_dummies_recipe <- "                                                           
@@ -3130,7 +3130,7 @@
 
     Code
       dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                                                
@@ -3162,7 +3162,7 @@
 
     Code
       no_dummy_clip_template(model, prefix, verbose, tune)
-    Message <cliMessage>
+    Message
       v code is on the clipboard.
     Output
        [1] "library(rules)"                                                                                 
