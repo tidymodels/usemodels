@@ -1,9 +1,3 @@
-library(modeldata)
-data("penguins")
-
-penguins$island <- as.character(penguins$island)
-
-# ------------------------------------------------------------------------------
 
 # Code to loop over all tests and configurations
 
@@ -45,7 +39,13 @@ no_dummy_clip_template <- function(model, prefix, verbose, tune) {
 }
 
 verify_models <- function(model, prefix, tune, verbose) {
+  skip_if_not_installed("modeldata")
   # These are automatically skipped on CRAN
+  library(modeldata)
+  data("penguins")
+
+  penguins$island <- as.character(penguins$island)
+
   if (model != "C5.0") {
     expect_snapshot(dummy_clip_template(model, prefix, verbose, tune))
   }
@@ -56,6 +56,12 @@ verify_models <- function(model, prefix, tune, verbose) {
 
 
 test_that("all model templates with clipboard", {
+  skip_if_not_installed("modeldata")
+  library(modeldata)
+  data("penguins")
+
+  penguins$island <- as.character(penguins$island)
+
   skip_on_cran()
   skip_on_os("linux")
   skip_on_os("windows")
