@@ -264,9 +264,14 @@ every data analysis. It has reasonable defaults.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://modeldata.tidymodels.org" class="external-link">modeldata</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">ad_data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">use_glmnet</span><span class="op">(</span><span class="va">Class</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">ad_data</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/is_installed.html" class="external-link">is_installed</a></span><span class="op">(</span><span class="st">"modeldata"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://modeldata.tidymodels.org" class="external-link">modeldata</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">ad_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">use_glmnet</span><span class="op">(</span><span class="va">Class</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">ad_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Sacramento</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">use_glmnet</span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Sacramento</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, prefix <span class="op">=</span> <span class="st">"sac_homes"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> glmnet_recipe &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = Class ~ ., data = ad_data) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_novel(all_nominal_predictors()) %&gt;% </span>
@@ -290,9 +295,6 @@ every data analysis. It has reasonable defaults.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> glmnet_tune &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   tune_grid(glmnet_workflow, resamples = <span style="color: #BB0000;">stop("add your rsample object")</span>, grid = glmnet_grid) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Sacramento</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">use_glmnet</span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">Sacramento</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span>, prefix <span class="op">=</span> <span class="st">"sac_homes"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sac_homes_recipe &lt;- </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   recipe(formula = price ~ ., data = Sacramento) %&gt;% </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step_novel(all_nominal_predictors()) %&gt;% </span>
@@ -338,7 +340,7 @@ every data analysis. It has reasonable defaults.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
   </div></footer></body></html>
