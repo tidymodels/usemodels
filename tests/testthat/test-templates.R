@@ -1,10 +1,3 @@
-library(modeldata)
-data("penguins")
-
-penguins$island <- as.character(penguins$island)
-
-# ------------------------------------------------------------------------------
-
 # Code to loop over all tests and configurations
 
 dummy_template <- function(model, prefix, verbose, tune) {
@@ -38,6 +31,12 @@ no_dummy_template <- function(model, prefix, verbose, tune) {
 }
 
 verify_models <- function(model, prefix, tune, verbose) {
+  skip_if_not_installed("modeldata")
+  library(modeldata)
+  data("penguins")
+
+  penguins$island <- as.character(penguins$island)
+
   # These are automatically skipped on CRAN
   if (model != "C5.0") {
     expect_snapshot(dummy_template(model, prefix, verbose, tune))
@@ -49,6 +48,12 @@ verify_models <- function(model, prefix, tune, verbose) {
 
 
 test_that("all model templates", {
+  skip_if_not_installed("modeldata")
+  library(modeldata)
+  data("penguins")
+
+  penguins$island <- as.character(penguins$island)
+
   models <- c("bag_tree_rpart", "C5.0", "cubist", "dbarts", "earth", "glmnet",
               "kernlab_svm_poly", "kernlab_svm_rbf", "kknn", "mgcv", "mixOmics",
               "nnet", "ranger", "rpart", "xgboost", "xrf")

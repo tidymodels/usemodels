@@ -1,7 +1,10 @@
-library(modeldata)
-data("penguins")
+
 
 test_that("wrong model type", {
+  skip_if_not_installed("modeldata")
+  library(modeldata)
+  data("penguins")
+
   expect_snapshot(use_cubist(island ~ ., data = penguins), error = TRUE)
   expect_snapshot(use_C5.0(bill_depth_mm ~ ., data = penguins), error = TRUE)
 })
