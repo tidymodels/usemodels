@@ -154,17 +154,20 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
     prm <-
       rlang::exprs(
         trees = tune(), min_n = tune(), tree_depth = tune(), learn_rate = tune(),
-        loss_reduction = tune(), sample_size = tune()
+        loss_reduction = tune(), sample_size = tune(), mtry = tune()
       )
+    mod_syntax <-
+        paste0(prefix, "_spec") %>%
+        assign_value(!!rlang::call2("boost_tree", !!!prm)) %>%
+        pipe_value(set_mode(!!model_mode(rec))) %>%
+        pipe_value(set_engine("xgboost", count = TRUE))
   } else {
-    prm <- NULL
+    mod_syntax <-
+      paste0(prefix, "_spec") %>%
+      assign_value(!!rlang::call2("boost_tree")) %>%
+      pipe_value(set_mode(!!model_mode(rec))) %>%
+      pipe_value(set_engine("xgboost"))
   }
-
-  mod_syntax <-
-    paste0(prefix, "_spec") %>%
-    assign_value(!!rlang::call2("boost_tree", !!!prm)) %>%
-    pipe_value(set_mode(!!model_mode(rec))) %>%
-    pipe_value(set_engine("xgboost"))
 
   route(rec_syntax, path = pth)
   route(mod_syntax, path = pth)
