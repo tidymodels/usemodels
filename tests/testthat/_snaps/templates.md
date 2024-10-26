@@ -1511,9 +1511,9 @@
       
       test_config_31_dummies_spec <- 
         boost_tree(trees = tune(), min_n = tune(), tree_depth = tune(), learn_rate = tune(), 
-          loss_reduction = tune(), sample_size = tune()) %>% 
+          loss_reduction = tune(), sample_size = tune(), mtry = tune()) %>% 
         set_mode("regression") %>% 
-        set_engine("xgboost") 
+        set_engine("xgboost", count = TRUE) 
       
       test_config_31_dummies_workflow <- 
         workflow() %>% 
@@ -1545,9 +1545,9 @@
       
       test_config_31_no_dummies_spec <- 
         boost_tree(trees = tune(), min_n = tune(), tree_depth = tune(), learn_rate = tune(), 
-          loss_reduction = tune(), sample_size = tune()) %>% 
+          loss_reduction = tune(), sample_size = tune(), mtry = tune()) %>% 
         set_mode("classification") %>% 
-        set_engine("xgboost") 
+        set_engine("xgboost", count = TRUE) 
       
       test_config_31_no_dummies_workflow <- 
         workflow() %>% 
@@ -2963,9 +2963,9 @@
       
       test_config_63_dummies_spec <- 
         boost_tree(trees = tune(), min_n = tune(), tree_depth = tune(), learn_rate = tune(), 
-          loss_reduction = tune(), sample_size = tune()) %>% 
+          loss_reduction = tune(), sample_size = tune(), mtry = tune()) %>% 
         set_mode("regression") %>% 
-        set_engine("xgboost") 
+        set_engine("xgboost", count = TRUE) 
       
       test_config_63_dummies_workflow <- 
         workflow() %>% 
@@ -2991,9 +2991,9 @@
       
       test_config_63_no_dummies_spec <- 
         boost_tree(trees = tune(), min_n = tune(), tree_depth = tune(), learn_rate = tune(), 
-          loss_reduction = tune(), sample_size = tune()) %>% 
+          loss_reduction = tune(), sample_size = tune(), mtry = tune()) %>% 
         set_mode("classification") %>% 
-        set_engine("xgboost") 
+        set_engine("xgboost", count = TRUE) 
       
       test_config_63_no_dummies_workflow <- 
         workflow() %>% 
