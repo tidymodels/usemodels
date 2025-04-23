@@ -20,8 +20,8 @@ y_lvl <- function(rec) {
   }
   var_roles <- summary(rec)
   y_cols <- var_roles$variable[var_roles$role == "outcome"]
-  y_dat <- rec$template %>%
-    dplyr::select(one_of(y_cols)) %>%
+  y_dat <- rec$template |>
+    dplyr::select(one_of(y_cols)) |>
     dplyr::pull(1)
   length(levels(y_dat))
 }
@@ -57,14 +57,14 @@ chr_assign <- function(name, value, cr = TRUE) {
   res
 }
 pipe_value <- function(base, value) {
-  # Find last non-comment line, add a `%>%` to the end, then add another line
+  # Find last non-comment line, add a `|>` to the end, then add another line
   value <- rlang::enexpr(value)
   value <- rlang::expr_text(value, width = expr_width)
   clean_base <- gsub("\\n", "", base)
   clean_base <- trimws(base, which = "left")
   not_comment <- seq_along(base)[!grepl("## ", clean_base)]
   n <- max(1, max(not_comment))
-  base[n] <- paste(base[n], "%>%")
+  base[n] <- paste(base[n], "|>")
   c(base, paste0("\n  ", value))
 }
 add_comment <- function(base, value, add = TRUE, colors = TRUE) {
@@ -84,22 +84,22 @@ add_comment <- function(base, value, add = TRUE, colors = TRUE) {
   res
 }
 add_steps_dummy_vars <- function(base, hot = FALSE, add = FALSE, colors = TRUE) {
-  base <- base %>%
+  base <- base |>
     pipe_value(step_novel(all_nominal_predictors()))
   if (hot) {
-    base <- base %>%
-      add_comment(dummy_hot_msg, add, colors = colors) %>%
+    base <- base |>
+      add_comment(dummy_hot_msg, add, colors = colors) |>
       pipe_value(step_dummy(all_nominal_predictors(), one_hot = TRUE))
   } else {
-    base <- base %>%
-      add_comment(dummy_msg, add, colors = colors) %>%
+    base <- base |>
+      add_comment(dummy_msg, add, colors = colors) |>
       pipe_value(step_dummy(all_nominal_predictors()))
   }
   base
 }
 add_steps_normalization <- function(base) {
-  base %>%
-    pipe_value(step_zv(all_predictors())) %>%
+  base |>
+    pipe_value(step_zv(all_predictors())) |>
     pipe_value(step_normalize(all_numeric_predictors()))
 }
 factor_check <- function(base, rec, add, colors = TRUE) {
@@ -107,15 +107,15 @@ factor_check <- function(base, rec, add, colors = TRUE) {
   nominal <- var_roles$variable[var_roles$type == "nominal"]
   is_str <-
     purrr::map_lgl(
-      rec$template %>% dplyr::select(dplyr::one_of(nominal)),
+      rec$template |> dplyr::select(dplyr::one_of(nominal)),
       rlang::is_character
     )
   if (any(is_str)) {
     selector <- rlang::expr(one_of(!!!nominal[is_str]))
     step_expr <- rlang::expr(step_string2factor(!!selector))
     base <-
-      base %>%
-      add_comment(string_to_factor_msg, add = add, colors = colors) %>%
+      base |>
+      add_comment(string_to_factor_msg, add = add, colors = colors) |>
       pipe_value(!!step_expr)
   }
   base
@@ -135,9 +135,9 @@ top_level_comment <- function(..., add = FALSE, colors = TRUE) {
 }
 
 template_workflow <- function(prefix) {
-  paste0(prefix, "_workflow") %>%
-    assign_value(workflow()) %>%
-    pipe_value(add_recipe(!!rlang::sym(paste0(prefix, "_recipe")))) %>%
+  paste0(prefix, "_workflow") |>
+    assign_value(workflow()) |>
+    pipe_value(add_recipe(!!rlang::sym(paste0(prefix, "_recipe")))) |>
     pipe_value(add_model(!!rlang::sym(paste0(prefix, "_spec"))))
 }
 

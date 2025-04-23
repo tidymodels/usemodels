@@ -25,20 +25,20 @@ For example, using the palmerpenguins data with a `glmnet` model:
 > data(penguins)
 > use_glmnet(body_mass_g ~ ., data = penguins)
 glmnet_recipe <- 
-  recipe(formula = body_mass_g ~ ., data = penguins) %>% 
-  step_novel(all_nominal_predictors()) %>% 
-  step_dummy(all_nominal_predictors()) %>% 
-  step_zv(all_predictors()) %>% 
+  recipe(formula = body_mass_g ~ ., data = penguins) |> 
+  step_novel(all_nominal_predictors()) |> 
+  step_dummy(all_nominal_predictors()) |> 
+  step_zv(all_predictors()) |> 
   step_normalize(all_numeric_predictors()) 
 
 glmnet_spec <- 
-  linear_reg(penalty = tune(), mixture = tune()) %>% 
-  set_mode("regression") %>% 
+  linear_reg(penalty = tune(), mixture = tune()) |> 
+  set_mode("regression") |> 
   set_engine("glmnet") 
 
 glmnet_workflow <- 
-  workflow() %>% 
-  add_recipe(glmnet_recipe) %>% 
+  workflow() |> 
+  add_recipe(glmnet_recipe) |> 
   add_model(glmnet_spec) 
 
 glmnet_grid <- tidyr::crossing(penalty = 10^seq(-6, -1, length.out = 20), mixture = c(0.05, 

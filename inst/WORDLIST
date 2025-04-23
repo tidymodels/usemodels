@@ -5,6 +5,7 @@ RStudio
 Tidymodels
 funder
 lifecycle
+magrittr
 palmerpenguins
 reprex
 tidymodels
