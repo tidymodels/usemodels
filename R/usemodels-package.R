@@ -8,7 +8,6 @@
 #' @importFrom dplyr one_of
 #' @importFrom dplyr pull
 #' @importFrom dplyr select
-#' @importFrom recipes %>%
 #' @importFrom recipes all_predictors
 #' @importFrom recipes recipe
 ## usethis namespace: end
