@@ -4,7 +4,8 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "",
@@ -28,7 +29,9 @@ Given a simple formula and a data set, the `use_*` functions can create code tha
 
 For example, using the palmerpenguins data with a `glmnet` model: 
 
-```{r glmnet, message=FALSE}
+```{r}
+#| label: glmnet
+#| message: false
 library(usemodels)
 library(palmerpenguins)
 data(penguins)
@@ -40,7 +43,8 @@ The recipe steps that are used (if any) depend on the type of data as well as th
 The package includes these templates:
 
 
-```{r use-list}
+```{r}
+#| label: use-list
 ls("package:usemodels", pattern = "use_")
 ```
 
