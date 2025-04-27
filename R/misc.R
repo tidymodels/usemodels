@@ -83,7 +83,12 @@ add_comment <- function(base, value, add = TRUE, colors = TRUE) {
   res <- c(base, paste0("\n  ", value))
   res
 }
-add_steps_dummy_vars <- function(base, hot = FALSE, add = FALSE, colors = TRUE) {
+add_steps_dummy_vars <- function(
+  base,
+  hot = FALSE,
+  add = FALSE,
+  colors = TRUE
+) {
   base <- base |>
     pipe_value(step_novel(all_nominal_predictors()))
   if (hot) {
@@ -153,14 +158,20 @@ template_tune_with_grid <- function(prefix, colors = TRUE) {
   if (colors) {
     res <- sub(
       "stop(\"add your rsample object\")",
-      tune::get_tune_colors()$message$danger("stop(\"add your rsample object\")"),
+      tune::get_tune_colors()$message$danger(
+        "stop(\"add your rsample object\")"
+      ),
       res,
       fixed = TRUE
     )
   }
   res
 }
-template_tune_no_grid <- function(prefix, seed = sample.int(10^5, 1), colors = TRUE) {
+template_tune_no_grid <- function(
+  prefix,
+  seed = sample.int(10^5, 1),
+  colors = TRUE
+) {
   tune_expr <-
     rlang::call2(
       "tune_grid",
@@ -177,13 +188,17 @@ template_tune_no_grid <- function(prefix, seed = sample.int(10^5, 1), colors = T
   if (colors) {
     res <- sub(
       "stop(\"add your rsample object\")",
-      tune::get_tune_colors()$message$danger("stop(\"add your rsample object\")"),
+      tune::get_tune_colors()$message$danger(
+        "stop(\"add your rsample object\")"
+      ),
       res,
       fixed = TRUE
     )
     res <- sub(
       "stop(\"add number of candidate points\")",
-      tune::get_tune_colors()$message$danger("stop(\"add number of candidate points\")"),
+      tune::get_tune_colors()$message$danger(
+        "stop(\"add number of candidate points\")"
+      ),
       res,
       fixed = TRUE
     )

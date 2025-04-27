@@ -1,4 +1,3 @@
-
 # Code to loop over all tests and configurations
 
 dummy_clip_template <- function(model, prefix, verbose, tune) {
@@ -66,9 +65,24 @@ test_that("all model templates with clipboard", {
   skip_on_os("linux")
   skip_on_os("windows")
 
-  models <- c("bag_tree_rpart", "C5.0", "cubist", "dbarts", "earth", "glmnet",
-              "kernlab_svm_poly", "kernlab_svm_rbf", "kknn", "mgcv", "mixOmics",
-              "nnet", "ranger", "rpart", "xgboost", "xrf")
+  models <- c(
+    "bag_tree_rpart",
+    "C5.0",
+    "cubist",
+    "dbarts",
+    "earth",
+    "glmnet",
+    "kernlab_svm_poly",
+    "kernlab_svm_rbf",
+    "kknn",
+    "mgcv",
+    "mixOmics",
+    "nnet",
+    "ranger",
+    "rpart",
+    "xgboost",
+    "xrf"
+  )
 
   test_config <-
     expand.grid(

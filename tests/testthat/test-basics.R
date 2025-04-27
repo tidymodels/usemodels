@@ -1,5 +1,3 @@
-
-
 test_that("wrong model type", {
   skip_if_not_installed("modeldata")
   library(modeldata)
@@ -11,5 +9,8 @@ test_that("wrong model type", {
 
 test_that("no access to clipboard", {
   Sys.setenv(CLIPR_ALLOW = FALSE)
-  expect_snapshot(use_kknn(mpg ~ ., data = mtcars, clipboard = TRUE), error = TRUE)
+  expect_snapshot(
+    use_kknn(mpg ~ ., data = mtcars, clipboard = TRUE),
+    error = TRUE
+  )
 })
