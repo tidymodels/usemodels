@@ -5,7 +5,7 @@ model_mode <- function(rec) {
   if (length(y_types) > 1) {
     rlang::abort("outcomes are of different types.")
   }
-  if (all(purrr::map_lgl(y_types, ~ "numeric" %in% .x))) {
+  if (all(purrr::map_lgl(y_types, \(.x) "numeric" %in% .x))) {
     mod_mode <- "regression"
   } else {
     mod_mode <- "classification"
@@ -29,7 +29,7 @@ y_lvl <- function(rec) {
 has_factor_pred <- function(x) {
   info <- summary(x)
   pred_types <- info$type[info$role == "predictor"]
-  any(purrr::map_lgl(pred_types, ~ "nominal" %in% .x))
+  any(purrr::map_lgl(pred_types, \(.x) "nominal" %in% .x))
 }
 
 num_pred_col <- function(x) {
