@@ -39,8 +39,15 @@
 #' }
 #' @export
 #' @rdname templates
-use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
-                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_glmnet <- function(
+  formula,
+  data,
+  prefix = "glmnet",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -120,8 +127,15 @@ use_glmnet <- function(formula, data, prefix = "glmnet", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
-                        tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_xgboost <- function(
+  formula,
+  data,
+  prefix = "xgboost",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -153,8 +167,12 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
   if (tune) {
     prm <-
       rlang::exprs(
-        trees = tune(), min_n = tune(), tree_depth = tune(), learn_rate = tune(),
-        loss_reduction = tune(), sample_size = tune()
+        trees = tune(),
+        min_n = tune(),
+        tree_depth = tune(),
+        learn_rate = tune(),
+        loss_reduction = tune(),
+        sample_size = tune()
       )
   } else {
     prm <- NULL
@@ -180,8 +198,15 @@ use_xgboost <- function(formula, data, prefix = "xgboost", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE,
-                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_kknn <- function(
+  formula,
+  data,
+  prefix = "kknn",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -233,8 +258,15 @@ use_kknn <- function(formula, data, prefix = "kknn", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE,
-                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_ranger <- function(
+  formula,
+  data,
+  prefix = "ranger",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -279,8 +311,15 @@ use_ranger <- function(formula, data, prefix = "ranger", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
-                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_earth <- function(
+  formula,
+  data,
+  prefix = "earth",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -307,7 +346,9 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
   if (tune) {
     prm <-
       rlang::exprs(
-        num_terms = tune(), prod_degree = tune(), prune_method = "none"
+        num_terms = tune(),
+        prod_degree = tune(),
+        prune_method = "none"
       )
   } else {
     prm <- NULL
@@ -353,8 +394,15 @@ use_earth <- function(formula, data, prefix = "earth", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
-                       tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_cubist <- function(
+  formula,
+  data,
+  prefix = "cubist",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -393,7 +441,10 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
   if (tune) {
     cubist_grid <- rlang::expr(
       cubist_grid <-
-        tidyr::crossing(committees = c(1:9, (1:5) * 10), neighbors = c(0, 3, 6, 9))
+        tidyr::crossing(
+          committees = c(1:9, (1:5) * 10),
+          neighbors = c(0, 3, 6, 9)
+        )
     )
     cubist_grid[[2]] <- rlang::sym(paste0(prefix, "_grid"))
     route(rlang::expr_text(cubist_grid, width = expr_width), path = pth)
@@ -405,8 +456,15 @@ use_cubist <- function(formula, data, prefix = "cubist", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_kernlab_svm_rbf <- function(formula, data, prefix = "kernlab", verbose = FALSE,
-                                tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_kernlab_svm_rbf <- function(
+  formula,
+  data,
+  prefix = "kernlab",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -450,8 +508,15 @@ use_kernlab_svm_rbf <- function(formula, data, prefix = "kernlab", verbose = FAL
 
 #' @export
 #' @rdname templates
-use_kernlab_svm_poly <- function(formula, data, prefix = "kernlab", verbose = FALSE,
-                                 tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_kernlab_svm_poly <- function(
+  formula,
+  data,
+  prefix = "kernlab",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -495,8 +560,15 @@ use_kernlab_svm_poly <- function(formula, data, prefix = "kernlab", verbose = FA
 
 #' @export
 #' @rdname templates
-use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
-                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_C5.0 <- function(
+  formula,
+  data,
+  prefix = "C50",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -539,8 +611,15 @@ use_C5.0 <- function(formula, data, prefix = "C50", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
-                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_nnet <- function(
+  formula,
+  data,
+  prefix = "nnet",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -564,7 +643,11 @@ use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
     add_steps_normalization()
 
   if (tune) {
-    prm <- rlang::exprs(hidden_units = tune(), penalty = tune(), epochs = tune())
+    prm <- rlang::exprs(
+      hidden_units = tune(),
+      penalty = tune(),
+      epochs = tune()
+    )
   } else {
     prm <- NULL
   }
@@ -587,8 +670,15 @@ use_nnet <- function(formula, data, prefix = "nnet", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
-                      tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_rpart <- function(
+  formula,
+  data,
+  prefix = "rpart",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -608,7 +698,9 @@ use_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
   if (tune) {
     prm <-
       rlang::exprs(
-        tree_depth = tune(), min_n = tune(), cost_complexity = tune()
+        tree_depth = tune(),
+        min_n = tune(),
+        cost_complexity = tune()
       )
   } else {
     prm <- NULL
@@ -632,8 +724,15 @@ use_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
-                               tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_bag_tree_rpart <- function(
+  formula,
+  data,
+  prefix = "rpart",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -680,8 +779,15 @@ use_bag_tree_rpart <- function(formula, data, prefix = "rpart", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_mgcv <- function(formula, data, prefix = "mgcv", verbose = FALSE,
-                    tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_mgcv <- function(
+  formula,
+  data,
+  prefix = "mgcv",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -738,8 +844,15 @@ use_mgcv <- function(formula, data, prefix = "mgcv", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_dbarts <- function(formula, data, prefix = "dbarts", verbose = FALSE,
-                     tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_dbarts <- function(
+  formula,
+  data,
+  prefix = "dbarts",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -785,8 +898,15 @@ use_dbarts <- function(formula, data, prefix = "dbarts", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_mixOmics <- function(formula, data, prefix = "mixOmics", verbose = FALSE,
-                    tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_mixOmics <- function(
+  formula,
+  data,
+  prefix = "mixOmics",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
@@ -815,7 +935,8 @@ use_mixOmics <- function(formula, data, prefix = "mixOmics", verbose = FALSE,
   if (tune) {
     prm <-
       rlang::exprs(
-        predictor_prop = tune(), num_comp = tune()
+        predictor_prop = tune(),
+        num_comp = tune()
       )
   } else {
     prm <- NULL
@@ -839,8 +960,15 @@ use_mixOmics <- function(formula, data, prefix = "mixOmics", verbose = FALSE,
 
 #' @export
 #' @rdname templates
-use_xrf <- function(formula, data, prefix = "xrf", verbose = FALSE,
-                         tune = TRUE, colors = TRUE, clipboard = FALSE) {
+use_xrf <- function(
+  formula,
+  data,
+  prefix = "xrf",
+  verbose = FALSE,
+  tune = TRUE,
+  colors = TRUE,
+  clipboard = FALSE
+) {
   check_clipboard(clipboard)
   colors <- check_color(colors, clipboard)
   pth <- output_loc(clipboard)
