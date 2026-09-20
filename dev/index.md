@@ -64,6 +64,7 @@ You can also copy code to the clipboard using the option
 You can install usemodels with:
 
 ``` r
+
 devtools::install_github("tidymodels/usemodels")
 ```
 

@@ -14,13 +14,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/tidymodels/usemodels/blob/main/DESCRIPTION)
 
-Kuhn M (2025). *usemodels: Boilerplate Code for 'Tidymodels' Analyses*.
+Kuhn M (2026). *usemodels: Boilerplate Code for 'Tidymodels' Analyses*.
 R package version 0.2.0.9000, <https://usemodels.tidymodels.org/>.
 
     @Manual{,
       title = {usemodels: Boilerplate Code for 'Tidymodels' Analyses},
       author = {Max Kuhn},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.2.0.9000},
       url = {https://usemodels.tidymodels.org/},
     }
